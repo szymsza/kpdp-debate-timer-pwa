@@ -1,0 +1,43 @@
+{
+  "private": false,
+  "name": "kpdp-debate-timer-pwa",
+  "version": "0.0.1",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "build": "preact build",
+    "serve": "sirv build --port 8080 --cors --single",
+    "dev": "preact watch -p 32169",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "start": "npm run dev"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "preact",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "ignorePatterns": [
+      "build/"
+    ]
+  },
+  "dependencies": {
+    "preact": "^10.3.1",
+    "preact-render-to-string": "^5.1.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-preact": "^1.1.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "node-sass": "^6.0.1",
+    "preact-cli": "^3.0.0",
+    "sass-loader": "^10.2.0",
+    "sirv-cli": "^1.0.0-next.3",
+    "typescript": "^3.7.5"
+  }
+}
