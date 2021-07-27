@@ -5,8 +5,8 @@
   "license": "GPL-3.0-only",
   "scripts": {
     "build": "preact build",
-    "serve": "sirv build --port 8080 --cors --single",
-    "dev": "preact watch -p 32169",
+    "serve": "sirv build --port 8082 --cors --single --host",
+    "dev": "preact watch -p 8081",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "start": "npm run dev"
   },
