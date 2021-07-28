@@ -7,13 +7,13 @@ import Speakers from '../../components/Speakers';
 import Dialog from '../../components/Dialog';
 
 const Timer: FunctionalComponent = () => (
-  <div>
+  <main>
     <Header />
     <Speakers />
     <PrepTime />
     <Toolbar />
     <Dialog />
-  </div>
+  </main>
 );
 
 export default Timer;
