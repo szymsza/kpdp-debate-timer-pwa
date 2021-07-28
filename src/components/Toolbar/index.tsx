@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from 'preact';
-import ToolbarButton from '../ToolbarButton';
+import ToolbarButton from './ToolbarButton';
 
 const Toolbar: FunctionalComponent = () => (
   <nav>
