@@ -4,7 +4,7 @@ import Radio from '../../components/Radio';
 import About from '../../components/About';
 
 const Settings: FunctionalComponent = () => (
-  <main>
+  <main className="screen screen--settings">
     <Navbar />
     <Radio />
     <About />

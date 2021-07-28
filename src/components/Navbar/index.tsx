@@ -1,9 +1,11 @@
 import { FunctionalComponent, h } from 'preact';
 
 const Navbar: FunctionalComponent = () => (
-  <nav>
-    <button type="button">&lt;</button>
-    <h1>Debatní stopky</h1>
+  <nav className="nav">
+    <button type="button" className="nav__back">&lt;</button>
+    <h1 className="nav__heading">
+      Debatní stopky
+    </h1>
   </nav>
 );
 

@@ -1,21 +1,18 @@
 import { FunctionalComponent, h } from 'preact';
 
 const Radio: FunctionalComponent = () => (
-  <section>
-    <p>Title:</p>
-    <div>
-      <label>
-        <input type="radio" name="custom-radio" />
+  <section className="radio">
+    <p className="radio__label">Title:</p>
+    <div className="radio__options">
+      <div className="radio__option radio__option--active">
         Option 1
-      </label>
-      <label>
-        <input type="radio" name="custom-radio" />
+      </div>
+      <div className="radio__option">
         Option 2
-      </label>
-      <label>
-        <input type="radio" name="custom-radio" />
+      </div>
+      <div className="radio__option">
         Option 3
-      </label>
+      </div>
     </div>
   </section>
 );

@@ -7,7 +7,7 @@ import Speakers from '../../components/Speakers';
 import Dialog from '../../components/Dialog';
 
 const Timer: FunctionalComponent = () => (
-  <main>
+  <main className="screen screen--timer">
     <Header />
     <Speakers />
     <PrepTime />

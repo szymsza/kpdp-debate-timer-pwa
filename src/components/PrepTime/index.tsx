@@ -2,10 +2,10 @@ import { FunctionalComponent, h } from 'preact';
 import Button from '../Button';
 
 const PrepTime: FunctionalComponent = () => (
-  <section>
-    <h2>Přípravný čas</h2>
-    <Button />
-    <Button />
+  <section className="preptime">
+    <h2 className="preptime__heading">Přípravný čas</h2>
+    <Button className="preptime__button" />
+    <Button className="preptime__button" />
   </section>
 );
 
