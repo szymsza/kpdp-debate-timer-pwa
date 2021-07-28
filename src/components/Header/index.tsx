@@ -1,8 +1,11 @@
 import { FunctionalComponent, h } from 'preact';
+import Button from '../Button';
+import Time from '../Time';
 
 const Header: FunctionalComponent = () => (
-  <header className="header">
-    <h1>Preact App</h1>
+  <header>
+    <Time />
+    <Button />
   </header>
 );
 

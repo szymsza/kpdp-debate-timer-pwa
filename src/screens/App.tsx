@@ -1,10 +1,10 @@
 import { FunctionalComponent, h } from 'preact';
 
-import Header from './Header';
+import Timer from './Timer';
 
 const App: FunctionalComponent = () => (
   <div id="preact_root">
-    <Header />
+    <Timer />
   </div>
 );
 

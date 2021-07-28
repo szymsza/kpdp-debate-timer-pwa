@@ -1,4 +1,4 @@
 import './style/index.sass';
-import App from './components/App';
+import App from './screens/App';
 
 export default App;
