@@ -1,8 +1,13 @@
 import { FunctionalComponent, h } from 'preact';
 
-const DialogButton: FunctionalComponent = () => (
-  <button type="button">
-    Ano/Zrušit
+export interface DialogButtonProps {
+  title: string
+  onClick: () => void
+}
+
+const DialogButton: FunctionalComponent<DialogButtonProps> = ({ title, onClick }) => (
+  <button type="button" onClick={() => onClick()}>
+    {title}
   </button>
 );
 

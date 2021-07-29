@@ -3,8 +3,8 @@ import ToolbarButton from './ToolbarButton';
 
 const Toolbar: FunctionalComponent = () => (
   <nav className="toolbar">
-    <ToolbarButton />
-    <ToolbarButton />
+    <ToolbarButton title="Resetovat" icon="O" />
+    <ToolbarButton title="Nastavení" icon="I" />
   </nav>
 );
 

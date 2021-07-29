@@ -1,4 +1,4 @@
-import { TimeSlot } from './types';
+import { TimeSlotConfig } from './types';
 import localisation from './localisation';
 
 const speechTimes: Record<string, number> = {
@@ -7,7 +7,7 @@ const speechTimes: Record<string, number> = {
   questions: 3,
 };
 
-export const speakers: TimeSlot[][] = [
+export const speakers: TimeSlotConfig[][] = [
   [{
     label: 'A1',
     time: speechTimes.constructive,
@@ -42,7 +42,7 @@ export const speakers: TimeSlot[][] = [
   }],
 ];
 
-export const prepTimes: TimeSlot[] = [
+export const prepTimes: TimeSlotConfig[] = [
   {
     label: localisation.affirmative,
     time: 5,

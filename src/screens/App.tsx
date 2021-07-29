@@ -14,11 +14,11 @@ import Settings from './Settings';
         - map config:
             - add `selected` property
             - add `paused` property
-            - convert minutes to seconds
+            - convert total minutes to seconds + add elapsed
     - prep times
         - map config:
             - add `active` property
-            - convert minutes to seconds
+            - convert total minutes to seconds + add elapsed
 */
 
 const App: FunctionalComponent = () => (

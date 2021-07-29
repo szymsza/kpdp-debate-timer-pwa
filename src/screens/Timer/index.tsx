@@ -12,7 +12,20 @@ const Timer: FunctionalComponent = () => (
     <Speakers />
     <PrepTime />
     <Toolbar />
-    <Dialog />
+    <Dialog
+      cancel={{
+        title: 'Zrušit',
+        onClick: () => {},
+      }}
+      confirm={{
+        title: 'Ano',
+        onClick: () => {},
+      }}
+    >
+      <p>
+        Opravdu si přejete stopky resetovat?
+      </p>
+    </Dialog>
   </main>
 );
 

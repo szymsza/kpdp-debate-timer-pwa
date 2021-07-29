@@ -4,9 +4,17 @@ import Time from '../Time';
 
 const Header: FunctionalComponent = () => (
   <header className="header">
-    <Time className="header__time" />
+    <Time
+      time={{
+        label: 'Time',
+        total: 360,
+        elapsed: 12,
+      }}
+      display="remaining"
+      className="header__time"
+    />
     <div className="header__button">
-      <Button />
+      <Button title="Spustit" className="button--larger" />
     </div>
   </header>
 );

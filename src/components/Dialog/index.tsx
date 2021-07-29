@@ -1,13 +1,32 @@
 import { FunctionalComponent, h } from 'preact';
-import DialogButton from './DialogButton';
+import DialogButton, { DialogButtonProps } from './DialogButton';
 
-const Dialog: FunctionalComponent = () => (
+interface DialogProps {
+  confirm?: DialogButtonProps
+  cancel?: DialogButtonProps
+}
+
+const Dialog: FunctionalComponent<DialogProps> = ({ children, confirm, cancel }) => (
   <aside>
-    <p>
-      Dialog text
-    </p>
-    <DialogButton />
-    <DialogButton />
+    {children}
+    {cancel && (
+      <DialogButton
+        title={cancel.title}
+        onClick={() => {
+          cancel.onClick();
+          // TODO - close dialog
+        }}
+      />
+    )}
+    {confirm && (
+      <DialogButton
+        title={confirm.title}
+        onClick={() => {
+          confirm.onClick();
+          // TODO - close dialog
+        }}
+      />
+    )}
   </aside>
 );
 
