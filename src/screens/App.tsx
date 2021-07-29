@@ -9,7 +9,7 @@ import Timer from './Timer';
         - later connect to URL
     - theme colour
         - auto/light/dark
-        - add `data-theme` to #preact_root
+        - document.body.setAttribute('data-theme', 'dark')
     - speakers
         - map config:
             - add `selected` property

@@ -1,4 +1,6 @@
 @import variables
+@import theme-light
+@import theme-dark
 
 *, *::before, *::after
 	box-sizing: border-box
@@ -6,8 +8,18 @@
 	transition-timing-function: linear
 	transition-property: none
 
+html, body, #preact_root
+	height: 100%
+
 body
 	margin: 0
+	color: var(--font-primary)
 	font-size: 16px
+	// For OS toolbar
+	background-color: var(--bg-secondary)
 
-@import ../components/Header/style
+.screen
+	height: 100%
+	background-color: var(--bg-primary)
+
+@import ../screens/Timer
