@@ -13,8 +13,8 @@ const Header: FunctionalComponent = () => (
       display="remaining"
       className="header__time"
     />
-    <div className="header__button">
-      <Button title="Spustit" className="button--larger" />
+    <div className="header__button-wrapper">
+      <Button title="Spustit" className="header__button" />
     </div>
   </header>
 );
