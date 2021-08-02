@@ -9,7 +9,9 @@ interface ToolbarButtonProps {
 
 const ToolbarButton: FunctionalComponent<ToolbarButtonProps> = ({ title, icon }) => (
   <button type="button" className="toolbar__button">
-    { icon === 'reset' ? <ResetIcon /> : <SettingsIcon /> }
+    <div className="toolbar__button-icon">
+      { icon === 'reset' ? <ResetIcon /> : <SettingsIcon /> }
+    </div>
     { title }
   </button>
 );
