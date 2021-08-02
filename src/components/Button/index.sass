@@ -4,7 +4,7 @@
     align-items: center
     display: flex
     flex-direction: column
-    height: 2.4rem
+    height: var(--height)
     justify-content: space-evenly
     padding: .25rem
     color: var(--bg-accent)
@@ -12,6 +12,10 @@
     border: 1px solid var(--bg-accent)
     border-radius: .5rem
     cursor: pointer
+    --height: 2.4rem
+    --inverse-height: 3rem
+    --title-font-size: .9rem
+    --subtitle-font-size: .75rem
 
 .button--active
     color: var(--font-accent)
@@ -21,14 +25,14 @@
         color: inherit
 
 .button--inverse
-    height: 3rem
+    height: var(--inverse-height)
 
     .button__title
-        font-size: .75rem
+        font-size: var(--subtitle-font-size)
 
     .button__subtitle
         color: inherit
-        font-size: .9rem
+        font-size: var(--title-font-size)
 
 .button--disabled
     filter: grayscale(1)
@@ -37,48 +41,31 @@
 
 .button__title
     display: block
-    font-size: .9rem
+    font-size: var(--title-font-size)
     font-weight: 500
 
 .button__subtitle
     color: var(--font-grey)
-    font-size: .75rem
+    font-size: var(--subtitle-font-size)
     font-weight: 300
 
 @media #{$iPhone6}
     .button
-        height: 2.75rem
-
-    .button__title
-        font-size: 1rem
-
-    .button__subtitle
-        font-size: .8rem
-
-    .button--inverse
-        height: 3.5rem
-
-        .button__title
-            font-size: .8rem
-
-        .button__subtitle
-            font-size: 1rem
+        --height: 2.75rem
+        --inverse-height: 3.5rem
+        --title-font-size: 1rem
+        --subtitle-font-size: .8rem
 
 @media #{$iPhone6Plus}
     .button
-        height: 3rem
+        --height: 3rem
+        --inverse-height: 3.5rem
+        --title-font-size: 1.25rem
+        --subtitle-font-size: .9rem
 
-    .button__title
-        font-size: 1.25rem
-
-    .button__subtitle
-        font-size: .9rem
-
-    .button--inverse
-        height: 3.5rem
-
-        .button__title
-            font-size: .9rem
-
-        .button__subtitle
-            font-size: 1.25rem
+@media #{$iPad}
+    .button
+        --height: 4rem
+        --inverse-height: 4.5rem
+        --title-font-size: 1.6rem
+        --subtitle-font-size: 1.1rem

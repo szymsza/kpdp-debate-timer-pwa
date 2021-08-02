@@ -14,8 +14,18 @@
     flex-direction: row
     flex-wrap: wrap
     justify-content: space-evenly
-    max-width: $maxContainerWidth
+    --padding-x: 1rem
+    max-width: calc(#{$maxContainerWidth} + (var(--padding-x) * 2))
     width: 100vw
 
 .speakers__column, .preptime__button
-    width: calc((100% - 3rem) / 2)
+    width: calc((100% - (var(--padding-x) * 3)) / 2)
+
+@media #{$iPad}
+    .speakers, .preptime
+        justify-content: space-between
+        --padding-x: 4rem
+        max-width: $maxContainerWidth
+
+    .speakers__column, .preptime__button
+        width: calc((100% - var(--padding-x)) / 2)
