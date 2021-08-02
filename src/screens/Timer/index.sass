@@ -29,3 +29,25 @@
 
     .speakers__column, .preptime__button
         width: calc((100% - var(--padding-x)) / 2)
+
+@media #{$iPhoneLandscape}
+    .screen--timer
+        flex-direction: row
+
+    .header
+        flex-basis: 15%
+
+    .speakers
+        flex-basis: 40%
+
+    .preptime
+        flex-basis: 20%
+
+    .speakers, .preptime
+        width: auto
+
+    .speakers__column
+        // width: 15vw
+
+    .preptime__button
+        width: 100%

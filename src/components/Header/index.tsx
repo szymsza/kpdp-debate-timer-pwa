@@ -14,7 +14,7 @@ const Header: FunctionalComponent = () => (
       className="header__time"
     />
     <div className="header__button-wrapper">
-      <Button title="Spustit" className="header__button" />
+      <Button title="Pozastavit" className="header__button" />
     </div>
   </header>
 );

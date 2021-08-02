@@ -5,6 +5,7 @@ $maxContainerWidth: 600px
 $iPhone6Breakpoint: 600px
 $iPhone6PlusBreakpoint: 700px
 $iPhoneXBreakpoint: 700px
+$iPhoneMaxWidth: 480px
 
 // Tablet - min width
 $iPadBreakpoint: 768px
@@ -15,7 +16,7 @@ $iPhone6: "only screen and (min-height: #{$iPhone6Breakpoint})"
 $iPhone6Plus: "only screen and (min-height: #{$iPhone6PlusBreakpoint})"
 $iPhoneX: "only screen and (min-height: #{$iPhoneXBreakpoint})"
 $iPhoneX: "only screen and (min-height: #{$iPhoneXBreakpoint})"
+$iPhoneLandscape: "only screen and (max-height: #{$iPhoneMaxWidth}) and (orientation: landscape)"
 
-$iPad: "only screen and (min-width: #{$iPadBreakpoint})"
-$iPadPro: "only screen and (min-width: #{$iPadProBreakpoint})"
-$desktop: "only screen and (min-width: #{$desktopBreakpoint})"
+$iPad: "only screen and (min-width: #{$iPadBreakpoint}) and (min-height: #{$iPhoneMaxWidth - .1px})"
+$iPadPro: "only screen and (min-width: #{$iPadProBreakpoint}) and (min-height: #{$iPhoneMaxWidth - .1px})"
