@@ -10,7 +10,13 @@
     font-size: .8rem
     line-height: 1.5rem
     transition-property: background-color, color
+    cursor: pointer
 
 .radio__option--active
     color: var(--font-accent)
     background-color: var(--bg-accent)
+
+@media #{$iPhone6}
+    .radio__option
+        font-size: .9rem
+        line-height: 1.8rem

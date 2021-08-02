@@ -12,6 +12,8 @@
     text-align: left
 
 .nav__back
+    cursor: pointer
+
     svg
         height: .85rem
         fill: var(--bg-accent)
@@ -20,3 +22,13 @@
     margin: 0
     font-size: .9rem
     font-weight: 300
+
+@media #{$iPhone6}
+    .nav
+        height: 3rem
+
+    .nav__back svg
+        height: .95rem
+
+    .nav__heading
+        font-size: 1rem
