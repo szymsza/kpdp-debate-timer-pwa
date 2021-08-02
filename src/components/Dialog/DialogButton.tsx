@@ -1,12 +1,19 @@
 import { FunctionalComponent, h } from 'preact';
 
-export interface DialogButtonProps {
+export type ButtonOnClickEvent = h.JSX.TargetedEvent<HTMLElement, MouseEvent>;
+
+interface DialogButtonProps {
   title: string
-  onClick?: () => void
+  onClick?: (e: ButtonOnClickEvent) => void
+  type: 'cancel' | 'confirm'
 }
 
-const DialogButton: FunctionalComponent<DialogButtonProps> = ({ title, onClick }) => (
-  <button type="button" onClick={() => (onClick ? onClick() : null)}>
+const DialogButton: FunctionalComponent<DialogButtonProps> = ({ title, onClick, type }) => (
+  <button
+    type="button"
+    onClick={(e) => (onClick ? onClick(e) : null)}
+    className={`dialog__button dialog__button--${type}`}
+  >
     {title}
   </button>
 );
