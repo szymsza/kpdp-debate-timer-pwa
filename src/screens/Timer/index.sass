@@ -2,3 +2,14 @@
     display: flex
     flex-direction: column
     justify-content: space-between
+
+.speakers, .preptime
+    align-self: center
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-evenly
+    width: calc(min(600px, 100vw))
+
+.speakers__column, .preptime__button
+    width: calc((100% - 3rem) / 2)

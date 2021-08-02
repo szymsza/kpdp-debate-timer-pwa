@@ -9,6 +9,7 @@ const Navbar: FunctionalComponent = () => (
     <h1 className="nav__heading">
       Debatní stopky
     </h1>
+    <span className="nav__filler" />
   </nav>
 );
 
