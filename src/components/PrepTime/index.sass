@@ -1,3 +1,5 @@
+@import "../../style/variables"
+
 .preptime__heading
     align-self: flex-end
     margin-bottom: .75rem
@@ -6,3 +8,12 @@
     font-size: 1.1rem
     font-weight: 200
     text-align: center
+
+@media #{$iPhone6}
+    .preptime__heading
+        margin-bottom: 1.25rem
+        font-size: 1.25rem
+
+@media #{$iPhone6Plus}
+    .preptime__heading
+        font-size: 1.5rem

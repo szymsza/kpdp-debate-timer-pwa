@@ -1,3 +1,5 @@
+@import "../../style/variables"
+
 .header
     display: flex
     flex-direction: column
@@ -7,12 +9,26 @@
 .header__time
     display: block
     margin: 1vh 0
-    font-size: 8vh
+    font-size: 9vh
     font-weight: 300
 
 .header__time--disabled
     opacity: calc(var(--disabled-opacity) - .25)
 
 .header__button
+    height: 2.75rem
     max-width: 350px
+    margin: 0 auto
     width: 60%
+
+@media #{$iPhone6}
+    .header__time
+        font-size: 10vh
+
+@media #{$iPhone6}
+    .header__button
+        height: 3rem
+
+@media #{$iPhoneX}
+    .header__button
+        height: 3.5rem

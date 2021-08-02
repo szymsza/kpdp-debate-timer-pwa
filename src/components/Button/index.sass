@@ -1,5 +1,12 @@
+@import "../../style/variables"
+
 .button
+    align-items: center
+    display: flex
+    flex-direction: column
     height: 2.4rem
+    justify-content: space-evenly
+    padding: .25rem
     color: var(--bg-accent)
     background-color: var(--bg-primary)
     border: 1px solid var(--bg-accent)
@@ -9,6 +16,19 @@
 .button--active
     color: var(--font-accent)
     background-color: var(--bg-accent)
+
+    .button__subtitle
+        color: inherit
+
+.button--inverse
+    height: 3rem
+
+    .button__title
+        font-size: .75rem
+
+    .button__subtitle
+        color: inherit
+        font-size: .9rem
 
 .button--disabled
     filter: grayscale(1)
@@ -21,14 +41,44 @@
     font-weight: 500
 
 .button__subtitle
+    color: var(--font-grey)
     font-size: .75rem
     font-weight: 300
 
-.button--inverse
-    height: 3rem
+@media #{$iPhone6}
+    .button
+        height: 2.75rem
 
     .button__title
-        font-size: .75rem
+        font-size: 1rem
+
+    .button__subtitle
+        font-size: .8rem
+
+    .button--inverse
+        height: 3.5rem
+
+        .button__title
+            font-size: .8rem
+
+        .button__subtitle
+            font-size: 1rem
+
+@media #{$iPhone6Plus}
+    .button
+        height: 3rem
+
+    .button__title
+        font-size: 1.25rem
 
     .button__subtitle
         font-size: .9rem
+
+    .button--inverse
+        height: 3.5rem
+
+        .button__title
+            font-size: .9rem
+
+        .button__subtitle
+            font-size: 1.25rem

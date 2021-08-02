@@ -1,12 +1,21 @@
 $transitionDuration: .15s
 $maxContainerWidth: 600px
 
-$mobileSmallBreakpoint: 576px
-$mobileBreakpoint: 767px
-$tabletBreakpoint: 991px
-$desktopSmallBreakpoint: 1200px
+// Mobile - min height
+$iPhone6Breakpoint: 600px
+$iPhone6PlusBreakpoint: 700px
+$iPhoneXBreakpoint: 700px
 
-$mobileSmall: "only screen and (max-width: #{$mobileSmallBreakpoint})"
-$mobile: "only screen and (max-width: #{$mobileBreakpoint})"
-$tablet: "only screen and (max-width: #{$tabletBreakpoint})"
-$desktopSmall: "only screen and (max-width: #{$desktopSmallBreakpoint})"
+// Tablet - min width
+$iPadBreakpoint: 768px
+$iPadProBreakpoint: 1024px
+$desktopBreakpoint: 1200px
+
+$iPhone6: "only screen and (min-height: #{$iPhone6Breakpoint})"
+$iPhone6Plus: "only screen and (min-height: #{$iPhone6PlusBreakpoint})"
+$iPhoneX: "only screen and (min-height: #{$iPhoneXBreakpoint})"
+$iPhoneX: "only screen and (min-height: #{$iPhoneXBreakpoint})"
+
+$iPad: "only screen and (min-width: #{$iPadBreakpoint})"
+$iPadPro: "only screen and (min-width: #{$iPadProBreakpoint})"
+$desktop: "only screen and (min-width: #{$desktopBreakpoint})"

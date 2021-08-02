@@ -6,8 +6,8 @@
     background-color: var(--bg-secondary)
 
 .toolbar__button
-    padding: .4rem
     max-width: #{$maxContainerWidth / 2}
+    padding: .4rem 0
     width: 50%
     color: var(--font-secondary)
     font-size: .6rem
@@ -20,3 +20,8 @@
     svg
         height: 1.25rem
         fill: var(--font-secondary)
+
+@media #{$iPhone6}
+    .toolbar__button
+        padding: .5rem 0
+        font-size: .75rem
