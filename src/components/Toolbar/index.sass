@@ -1,3 +1,5 @@
+@import "../../style/variables"
+
 .toolbar
     display: flex
     justify-content: center
@@ -5,7 +7,8 @@
 
 .toolbar__button
     padding: .4rem
-    width: calc(min(50%, 300px))
+    max-width: #{$maxContainerWidth / 2}
+    width: 50%
     color: var(--font-secondary)
     font-size: .6rem
     font-weight: 300
