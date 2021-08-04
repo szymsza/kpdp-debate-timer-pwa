@@ -1,30 +1,15 @@
 import { FunctionalComponent, h } from 'preact';
 
 import Timer from './Timer';
+import Store from '../store';
 // import Settings from './Settings';
-
-/* TODO create global store
-    - screen
-        - timer/settings
-        - later connect to URL
-    - theme colour
-        - auto/light/dark
-        - document.body.setAttribute('data-theme', 'dark')
-    - speakers
-        - map config:
-            - add `selected` property
-            - add `paused` property
-            - convert total minutes to seconds + add elapsed
-    - prep times
-        - map config:
-            - add `active` property
-            - convert total minutes to seconds + add elapsed
-*/
 
 const App: FunctionalComponent = () => (
   <div id="preact_root">
-    <Timer />
-    {/* <Settings / */}
+    <Store>
+      <Timer />
+      {/* <Settings / */}
+    </Store>
   </div>
 );
 
