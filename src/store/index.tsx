@@ -5,11 +5,9 @@ import { StoreAction, StoreContent } from './types';
 
 /* TODO create global store
     - screen
-        - timer/settings
-        - later connect to URL
+        - connect to URL
     - theme colour
-        - auto/light/dark
-        - document.body.setAttribute('data-theme', 'dark')
+        - get from local storage/@media if auto
     - speakers
         - map config:
             - add `selected` property
@@ -21,8 +19,11 @@ import { StoreAction, StoreContent } from './types';
             - convert total minutes to seconds + add elapsed
 */
 
-const initialState = {
-  error: 'Test store',
+const initialState: StoreContent = {
+  screen: 'timer',
+  theme: 'auto',
+  speakers: [],
+  prepTimes: [],
 };
 
 export const Context = createContext({
