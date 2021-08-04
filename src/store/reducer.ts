@@ -12,7 +12,10 @@ const reducer = (state: StoreContent, action: StoreAction) => {
       document.body.setAttribute('data-theme', action.payload);
       return {
         ...state,
-        theme: action.payload,
+        themes: state.themes.map((item) => ({
+          ...item,
+          active: item.value === action.payload,
+        })),
       };
     default:
       return state;

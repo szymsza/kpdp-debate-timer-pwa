@@ -1,13 +1,14 @@
 import React, { h, createContext, FunctionalComponent } from 'preact';
 import { useReducer } from 'preact/hooks';
 import reducer from './reducer';
-import { StoreAction, StoreContent } from './types';
+import { Dispatch, StoreAction, StoreContent } from './types';
 
 /* TODO create global store
     - screen
         - connect to URL
     - theme colour
         - get from local storage/@media if auto
+        - move options to config
     - speakers
         - map config:
             - add `selected` property
@@ -21,7 +22,19 @@ import { StoreAction, StoreContent } from './types';
 
 const initialState: StoreContent = {
   screen: 'timer',
-  theme: 'auto',
+  themes: [{
+    label: 'Auto',
+    value: 'auto',
+    active: true,
+  }, {
+    label: 'Tmavý',
+    value: 'dark',
+    active: false,
+  }, {
+    label: 'Světlý',
+    value: 'light',
+    active: false,
+  }],
   speakers: [],
   prepTimes: [],
 };
@@ -29,7 +42,7 @@ const initialState: StoreContent = {
 export const Context = createContext({
   state: initialState,
   dispatch: (() => {
-  }) as (action: StoreAction) => void,
+  }) as Dispatch,
 });
 
 const Store: FunctionalComponent = ({ children }) => {

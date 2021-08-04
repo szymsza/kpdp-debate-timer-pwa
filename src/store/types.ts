@@ -1,10 +1,11 @@
 import {
-  ColourTheme, PrepTimeSlot, Screen, SpeakerTimeSlot,
+  PrepTimeSlot, Screen, SpeakerTimeSlot,
 } from '../types';
+import { RadioOption } from '../components/Radio';
 
 export interface StoreContent {
   screen: Screen
-  theme: ColourTheme
+  themes: RadioOption[]
   speakers: SpeakerTimeSlot[]
   prepTimes: PrepTimeSlot[]
 }
@@ -15,3 +16,5 @@ export interface StoreAction {
   type: StoreActionType
   payload: any
 }
+
+export type Dispatch = (action: StoreAction) => void;

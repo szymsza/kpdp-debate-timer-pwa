@@ -1,7 +1,5 @@
 export type Screen = 'timer' | 'settings';
 
-export type ColourTheme = 'auto' | 'light' | 'dark';
-
 export interface TimeSlotConfig {
   label: string,
   time: number,

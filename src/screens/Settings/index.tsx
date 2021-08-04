@@ -1,40 +1,28 @@
 import { FunctionalComponent, h } from 'preact';
-import { StateUpdater, useState } from 'preact/hooks';
+import { useContext } from 'preact/hooks';
+import { Context } from '../../store';
+import { Dispatch } from '../../store/types';
 import Navbar from '../../components/Navbar';
-import Radio, { RadioOption } from '../../components/Radio';
+import Radio from '../../components/Radio';
 import About from '../../components/About';
 
-const setActiveColourMode = (newValue: string, setState: StateUpdater<RadioOption[]>): void => {
-  setState((old) => old.map((item) => ({
-    ...item,
-    active: item.value === newValue,
-  })));
+const setActiveTheme = (newValue: string, dispatch: Dispatch): void => {
+  dispatch({
+    type: 'SET_THEME',
+    payload: newValue,
+  });
 };
 
-const initialColourModes: RadioOption[] = [{
-  label: 'Auto',
-  value: 'auto',
-  active: true,
-}, {
-  label: 'Tmavý',
-  value: 'dark',
-  active: false,
-}, {
-  label: 'Světlý',
-  value: 'light',
-  active: false,
-}];
-
 const Settings: FunctionalComponent = () => {
-  const [colourModes, setColourModes] = useState<RadioOption[]>(initialColourModes);
+  const { state, dispatch } = useContext(Context);
 
   return (
     <main className="screen screen--settings">
       <Navbar />
       <Radio
         label="Barevný režim:"
-        options={colourModes}
-        onChange={(newValue) => setActiveColourMode(newValue, setColourModes)}
+        options={state.themes}
+        onChange={(newValue) => setActiveTheme(newValue, dispatch)}
       />
       <About />
     </main>
