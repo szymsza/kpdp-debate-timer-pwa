@@ -6,7 +6,7 @@ import { RadioOption } from '../components/Radio';
 export interface StoreContent {
   screen: Screen
   themes: RadioOption[]
-  speakers: SpeakerTimeSlot[]
+  speakers: SpeakerTimeSlot[][]
   prepTimes: PrepTimeSlot[]
 }
 
