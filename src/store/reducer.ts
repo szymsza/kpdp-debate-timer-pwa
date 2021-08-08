@@ -17,6 +17,16 @@ const reducer = (state: StoreContent, action: StoreAction) => {
           active: item.value === action.payload,
         })),
       };
+    case 'SELECT_SPEAKER':
+      return {
+        ...state,
+        speakers: state.speakers.map((party) => party.map(
+          (item) => ({
+            ...item,
+            selected: item.label === action.payload,
+          }),
+        )),
+      };
     default:
       return state;
   }

@@ -1,6 +1,5 @@
 import { FunctionalComponent, h } from 'preact';
-
-export type ButtonOnClickEvent = h.JSX.TargetedEvent<HTMLElement, MouseEvent>;
+import { ButtonOnClickEvent } from '../Button';
 
 interface DialogButtonProps {
   title: string

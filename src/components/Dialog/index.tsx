@@ -1,6 +1,7 @@
 import { FunctionalComponent, h } from 'preact';
 import { StateUpdater } from 'preact/hooks';
-import DialogButton, { ButtonOnClickEvent } from './DialogButton';
+import DialogButton from './DialogButton';
+import { ButtonOnClickEvent } from '../Button';
 
 interface DialogButtonOptions {
   title: string

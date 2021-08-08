@@ -2,6 +2,8 @@ import { FunctionalComponent, h } from 'preact';
 import Time from '../Time';
 import { TimeSlot } from '../../types';
 
+export type ButtonOnClickEvent = h.JSX.TargetedEvent<HTMLElement, MouseEvent>;
+
 interface ButtonProps {
   title: string
   className?: string
@@ -9,6 +11,7 @@ interface ButtonProps {
   active?: boolean
   inverse?: boolean
   disabled?: boolean
+  onClick?: (e: ButtonOnClickEvent) => void
 }
 
 const Button: FunctionalComponent<ButtonProps> = ({
@@ -18,9 +21,11 @@ const Button: FunctionalComponent<ButtonProps> = ({
   active,
   inverse,
   disabled,
+  onClick,
 }) => (
   <button
     type="button"
+    onClick={(e) => (onClick ? onClick(e) : null)}
     className={`button ${className ?? ''} ${active ? 'button--active' : ''} ${inverse ? 'button--inverse' : ''} ${disabled ? 'button--disabled' : ''}`}
     disabled={disabled}
   >
