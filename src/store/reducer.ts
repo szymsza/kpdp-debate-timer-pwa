@@ -48,7 +48,7 @@ const togglePausedTimer = (state: StoreContent): StoreContent => ({
   speakers: state.speakers.map((party) => party.map(
     (speaker) => ({
       ...speaker,
-      paused: speaker.selected && !speaker.paused,
+      paused: !speaker.selected || !speaker.paused,
     }),
   )),
 });

@@ -4,6 +4,7 @@ import { Dispatch } from '../../store/types';
 import { Context } from '../../store';
 import Button from '../Button';
 import Time from '../Time';
+import { getSelectedSpeaker } from '../../store/getters';
 
 const togglePausedTimer = (dispatch: Dispatch) => {
   dispatch({
@@ -13,23 +14,21 @@ const togglePausedTimer = (dispatch: Dispatch) => {
 };
 
 const Header: FunctionalComponent = () => {
-  const { dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
+  const speaker = getSelectedSpeaker(state);
 
   return (
     <header className="header">
       <Time
-        time={{
-          label: 'Time',
-          total: 360,
-          elapsed: 12,
-        }}
+        time={speaker}
         display="remaining"
         className="header__time"
       />
       <div className="header__button-wrapper">
         <Button
-          title="Pozastavit"
+          title={speaker.paused ? 'Spustit' : 'Pozastavit'}
           className="header__button"
+          active={!speaker.paused}
           onClick={() => togglePausedTimer(dispatch)}
         />
       </div>
