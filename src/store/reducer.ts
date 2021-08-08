@@ -21,10 +21,6 @@ const setTheme = (state: StoreContent, value: string): StoreContent => {
 
 const setSelectedSpeaker = (state: StoreContent, label: string): StoreContent => ({
   ...state,
-  prepTimes: state.prepTimes.map((time) => ({
-    ...time,
-    active: false,
-  })),
   speakers: state.speakers.map((party) => party.map(
     (item) => ({
       ...item,
@@ -39,18 +35,22 @@ const toggleActivePrepTime = (state: StoreContent, label: string): StoreContent 
     ...time,
     active: time.label === label && !time.active,
   })),
-  speakers: state.speakers.map((party) => party.map(
-    (item) => ({
-      ...item,
-      selected: false,
-    }),
-  )),
 });
 
 const reset = (state: StoreContent): StoreContent => ({
   ...state,
   speakers: initialState.speakers,
   prepTimes: initialState.prepTimes,
+});
+
+const togglePausedTimer = (state: StoreContent): StoreContent => ({
+  ...state,
+  speakers: state.speakers.map((party) => party.map(
+    (speaker) => ({
+      ...speaker,
+      paused: speaker.selected && !speaker.paused,
+    }),
+  )),
 });
 
 const reducer = (state: StoreContent, action: StoreAction): StoreContent => {
@@ -65,6 +65,8 @@ const reducer = (state: StoreContent, action: StoreAction): StoreContent => {
       return toggleActivePrepTime(state, action.payload);
     case 'RESET':
       return reset(state);
+    case 'TOGGLE_PAUSED_TIMER':
+      return togglePausedTimer(state);
     default:
       return state;
   }

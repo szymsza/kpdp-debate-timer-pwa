@@ -6,11 +6,11 @@ export default {
   screen: 'timer' as Screen,
   themes,
   speakers: speakers.map(
-    (party) => party.map(
-      (speaker) => ({
+    (party, partyIndex) => party.map(
+      (speaker, speakerIndex) => ({
         ...speaker,
         paused: true,
-        selected: false,
+        selected: speakerIndex === 0 && partyIndex === speakerIndex,
         total: speaker.time * 60,
         elapsed: 0,
       }),
