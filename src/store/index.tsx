@@ -2,7 +2,7 @@ import React, { h, createContext, FunctionalComponent } from 'preact';
 import { useReducer } from 'preact/hooks';
 import reducer from './reducer';
 import { Dispatch, StoreAction, StoreContent } from './types';
-import initialState from './initialState';
+import initialStore from './initialStore';
 
 /* TODO create global store
     - screen - connect to URL
@@ -10,15 +10,15 @@ import initialState from './initialState';
 */
 
 export const Context = createContext({
-  state: initialState,
+  store: initialStore,
   dispatch: (() => {
   }) as Dispatch,
 });
 
 const Store: FunctionalComponent = ({ children }) => {
-  const [state, dispatch] = useReducer<StoreContent, StoreAction>(reducer, initialState);
+  const [store, dispatch] = useReducer<StoreContent, StoreAction>(reducer, initialStore);
   return (
-    <Context.Provider value={{ state, dispatch }}>
+    <Context.Provider value={{ store, dispatch }}>
       {children}
     </Context.Provider>
   );

@@ -14,8 +14,8 @@ const togglePausedTimer = (dispatch: Dispatch) => {
 };
 
 const Header: FunctionalComponent = () => {
-  const { state, dispatch } = useContext(Context);
-  const speaker = getSelectedSpeaker(state);
+  const { store, dispatch } = useContext(Context);
+  const speaker = getSelectedSpeaker(store);
 
   return (
     <header className="header">

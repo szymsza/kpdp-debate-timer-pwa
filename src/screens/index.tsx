@@ -5,11 +5,11 @@ import Settings from './Settings';
 import Timer from './Timer';
 
 const Screens: FunctionalComponent = () => {
-  const { state } = useContext(Context);
+  const { store } = useContext(Context);
   return (
     <Fragment>
-      {state.screen === 'timer' && <Timer />}
-      {state.screen === 'settings' && <Settings />}
+      {store.screen === 'timer' && <Timer />}
+      {store.screen === 'settings' && <Settings />}
     </Fragment>
   );
 };

@@ -3,6 +3,8 @@ import { StateUpdater } from 'preact/hooks';
 import DialogButton from './DialogButton';
 import { ButtonOnClickEvent } from '../Button';
 
+type SetVisibleUpdater = StateUpdater<boolean>;
+
 interface DialogButtonOptions {
   title: string
   onClick?: () => void
@@ -11,13 +13,13 @@ interface DialogButtonOptions {
 interface DialogProps {
   confirm?: DialogButtonOptions
   cancel?: DialogButtonOptions
-  setVisible: StateUpdater<boolean>
+  setVisible: SetVisibleUpdater
 }
 
 const dialogActionClicked = (
   e: ButtonOnClickEvent,
   callback: (() => void) | undefined,
-  setVisible: StateUpdater<boolean>,
+  setVisible: SetVisibleUpdater,
 ) => {
   // Content clicked, not backdrop
   if (e.target !== e.currentTarget) return;

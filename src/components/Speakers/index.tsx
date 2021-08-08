@@ -12,11 +12,11 @@ const setSelectedSpeaker = (dispatch: Dispatch, label: string) => {
 };
 
 const Speakers: FunctionalComponent = () => {
-  const { state, dispatch } = useContext(Context);
+  const { store, dispatch } = useContext(Context);
   return (
     <section className="speakers">
       {
-        state.speakers.map((party) => (
+        store.speakers.map((party) => (
           <section className="speakers__column">
             {
               party.map((speaker) => (

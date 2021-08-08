@@ -12,13 +12,13 @@ const toggleActivePrepTime = (dispatch: Dispatch, label: string) => {
 };
 
 const PrepTime: FunctionalComponent = () => {
-  const { state, dispatch } = useContext(Context);
+  const { store, dispatch } = useContext(Context);
 
   return (
     <section className="preptime">
       <h2 className="preptime__heading">Přípravný čas</h2>
       {
-        state.prepTimes.map((time) => (
+        store.prepTimes.map((time) => (
           <Button
             title={time.label}
             className="preptime__button"

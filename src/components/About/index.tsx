@@ -5,10 +5,10 @@ import AdkLogoLight from '../../assets/adk-logo.png';
 import AdkLogoDark from '../../assets/adk-logo-dark.png';
 
 const About: FunctionalComponent = () => {
-  const { state } = useContext(Context);
+  const { store } = useContext(Context);
 
   // TODO - deal with 'auto' value (+ use some global selector)
-  const isDarkTheme = state.themes.find((item) => item.value === 'dark')!.active;
+  const isDarkTheme = store.themes.find((item) => item.value === 'dark')!.active;
 
   return (
     <section className="about">

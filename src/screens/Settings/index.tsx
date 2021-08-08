@@ -14,14 +14,14 @@ const setActiveTheme = (newValue: string, dispatch: Dispatch): void => {
 };
 
 const Settings: FunctionalComponent = () => {
-  const { state, dispatch } = useContext(Context);
+  const { store, dispatch } = useContext(Context);
 
   return (
     <main className="screen screen--settings">
       <Navbar />
       <Radio
         label="Barevný režim:"
-        options={state.themes}
+        options={store.themes}
         onChange={(newValue) => setActiveTheme(newValue, dispatch)}
       />
       <About />
