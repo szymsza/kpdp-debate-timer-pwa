@@ -15,22 +15,22 @@ const togglePausedTimer = (dispatch: Dispatch) => {
 
 const Header: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
-  const speaker = getSelectedSpeaker(store);
-  const prepTime = getActivePrepTime(store);
+  const activeSpeaker = getSelectedSpeaker(store);
+  const activePrepTime = getActivePrepTime(store);
 
   return (
     <header className="header">
       <Time
-        time={speaker}
+        time={activeSpeaker}
         display="remaining"
-        className={`header__time ${prepTime ? 'header__time--disabled' : ''}`}
+        className={`header__time ${activePrepTime ? 'header__time--disabled' : ''}`}
       />
       <div className="header__button-wrapper">
         <Button
-          title={speaker.paused ? 'Spustit' : 'Pozastavit'}
+          title={activeSpeaker.paused ? 'Spustit' : 'Pozastavit'}
           className="header__button"
-          active={!speaker.paused}
-          disabled={!!prepTime}
+          active={!activeSpeaker.paused}
+          disabled={!!activePrepTime}
           onClick={() => togglePausedTimer(dispatch)}
         />
       </div>
