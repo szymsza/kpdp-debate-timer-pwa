@@ -1,8 +1,9 @@
 import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../store';
-import Button from '../Button';
 import { Dispatch } from '../../store/types';
+import { getActivePrepTime } from '../../store/getters';
+import Button from '../Button';
 
 const toggleActivePrepTime = (dispatch: Dispatch, label: string) => {
   dispatch({
@@ -13,6 +14,7 @@ const toggleActivePrepTime = (dispatch: Dispatch, label: string) => {
 
 const PrepTime: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
+  const active = getActivePrepTime(store);
 
   return (
     <section className="preptime">
@@ -23,6 +25,7 @@ const PrepTime: FunctionalComponent = () => {
             title={time.label}
             className="preptime__button"
             active={time.active}
+            disabled={active && active !== time}
             inverse
             time={time}
             onClick={() => toggleActivePrepTime(dispatch, time.label)}
