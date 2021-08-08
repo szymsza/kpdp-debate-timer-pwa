@@ -4,9 +4,9 @@ import { Context } from '../../store';
 import Button from '../Button';
 import { Dispatch } from '../../store/types';
 
-const selectSpeaker = (dispatch: Dispatch, label: string) => {
+const setSelectedSpeaker = (dispatch: Dispatch, label: string) => {
   dispatch({
-    type: 'SELECT_SPEAKER',
+    type: 'SET_SELECTED_SPEAKER',
     payload: label,
   });
 };
@@ -26,7 +26,7 @@ const Speakers: FunctionalComponent = () => {
                   active={speaker.selected}
                   disabled={false}
                   time={speaker}
-                  onClick={() => selectSpeaker(dispatch, speaker.label)}
+                  onClick={() => setSelectedSpeaker(dispatch, speaker.label)}
                 />
               ))
             }
