@@ -8,3 +8,7 @@ export const getSelectedSpeaker = (store: StoreContent): SpeakerTimeSlot => (
 export const getActivePrepTime = (store: StoreContent): PrepTimeSlot | undefined => (
   store.prepTimes.find((time) => time.active)
 );
+
+export const timerOrPrepTimeRunning = (store: StoreContent): boolean => (
+  !!getActivePrepTime(store) || !getSelectedSpeaker(store).paused
+);

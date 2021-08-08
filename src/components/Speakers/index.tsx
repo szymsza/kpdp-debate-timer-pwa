@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../store';
 import { Dispatch } from '../../store/types';
-import { getActivePrepTime, getSelectedSpeaker } from '../../store/getters';
+import { timerOrPrepTimeRunning } from '../../store/getters';
 import Button from '../Button';
 
 const setSelectedSpeaker = (dispatch: Dispatch, label: string) => {
@@ -14,8 +14,7 @@ const setSelectedSpeaker = (dispatch: Dispatch, label: string) => {
 
 const Speakers: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
-  const activeSpeaker = getSelectedSpeaker(store);
-  const activePrepTime = getActivePrepTime(store);
+  const timeRunning = timerOrPrepTimeRunning(store);
 
   return (
     <section className="speakers">
@@ -28,7 +27,7 @@ const Speakers: FunctionalComponent = () => {
                   title={speaker.label}
                   className="speakers__button"
                   active={speaker.selected}
-                  disabled={!!activePrepTime || !activeSpeaker.paused}
+                  disabled={timeRunning}
                   time={speaker}
                   onClick={() => setSelectedSpeaker(dispatch, speaker.label)}
                 />
