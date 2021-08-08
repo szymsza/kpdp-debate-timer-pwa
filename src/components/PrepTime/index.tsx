@@ -4,9 +4,9 @@ import { Context } from '../../store';
 import Button from '../Button';
 import { Dispatch } from '../../store/types';
 
-const setActivePrepTime = (dispatch: Dispatch, label: string) => {
+const toggleActivePrepTime = (dispatch: Dispatch, label: string) => {
   dispatch({
-    type: 'SET_ACTIVE_PREP_TIME',
+    type: 'TOGGLE_ACTIVE_PREP_TIME',
     payload: label,
   });
 };
@@ -25,7 +25,7 @@ const PrepTime: FunctionalComponent = () => {
             active={time.active}
             inverse
             time={time}
-            onClick={() => setActivePrepTime(dispatch, time.label)}
+            onClick={() => toggleActivePrepTime(dispatch, time.label)}
           />
         ))
       }

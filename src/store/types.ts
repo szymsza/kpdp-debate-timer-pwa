@@ -10,7 +10,7 @@ export interface StoreContent {
   prepTimes: PrepTimeSlot[]
 }
 
-export type StoreActionType = 'SET_SCREEN' | 'SET_THEME' | 'SET_SELECTED_SPEAKER' | 'SET_ACTIVE_PREP_TIME' | 'RESET';
+export type StoreActionType = 'SET_SCREEN' | 'SET_THEME' | 'SET_SELECTED_SPEAKER' | 'TOGGLE_ACTIVE_PREP_TIME' | 'RESET';
 
 export interface StoreAction {
   type: StoreActionType
