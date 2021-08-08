@@ -20,10 +20,28 @@ const reducer = (state: StoreContent, action: StoreAction) => {
     case 'SELECT_SPEAKER':
       return {
         ...state,
+        prepTimes: state.prepTimes.map((time) => ({
+          ...time,
+          active: false,
+        })),
         speakers: state.speakers.map((party) => party.map(
           (item) => ({
             ...item,
             selected: item.label === action.payload,
+          }),
+        )),
+      };
+    case 'SET_ACTIVE_PREP_TIME':
+      return {
+        ...state,
+        prepTimes: state.prepTimes.map((time) => ({
+          ...time,
+          active: time.label === action.payload,
+        })),
+        speakers: state.speakers.map((party) => party.map(
+          (item) => ({
+            ...item,
+            selected: false,
           }),
         )),
       };

@@ -2,9 +2,17 @@ import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../store';
 import Button from '../Button';
+import { Dispatch } from '../../store/types';
+
+const setActivePrepTime = (dispatch: Dispatch, label: string) => {
+  dispatch({
+    type: 'SET_ACTIVE_PREP_TIME',
+    payload: label,
+  });
+};
 
 const PrepTime: FunctionalComponent = () => {
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
 
   return (
     <section className="preptime">
@@ -14,8 +22,10 @@ const PrepTime: FunctionalComponent = () => {
           <Button
             title={time.label}
             className="preptime__button"
+            active={time.active}
             inverse
             time={time}
+            onClick={() => setActivePrepTime(dispatch, time.label)}
           />
         ))
       }
