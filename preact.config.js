@@ -10,7 +10,17 @@ export default {
    * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
    **/
   webpack(config, env, helpers, options) {
-    config.output.publicPath = './';
+    const productionSubfolder = 'stopky';
+
+    const subfolder = env.isProd ? `/${productionSubfolder}` : '';
+    config.output.publicPath = env.isProd ? `${subfolder}/` : './';
+
+    // Access the public path in the app as 'process.env.SUBFOLDER'
+    config.plugins.push(
+      new helpers.webpack.DefinePlugin({
+        'process.env.SUBFOLDER': JSON.stringify(subfolder)
+      })
+    );
 
     if (env.isProd) {
       config.devtool = false; // disable sourcemaps

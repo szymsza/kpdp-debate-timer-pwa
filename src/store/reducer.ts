@@ -17,7 +17,7 @@ const setScreen = (
   }
 
   if (pushHistory) {
-    window.history.pushState(screenSafe, document.title, `/${screenSafe}`);
+    window.history.pushState(screenSafe, document.title, `${process.env.SUBFOLDER}/${screenSafe}`);
   }
 
   return {

@@ -25,7 +25,7 @@ const Screens: FunctionalComponent = () => {
     dispatch({
       type: 'SET_SCREEN',
       payload: {
-        screen: document.location.pathname.substr(1),
+        screen: document.location.pathname.substr(1 + String(process.env.SUBFOLDER).length),
         pushHistory: false,
       },
     });
