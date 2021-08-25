@@ -18,3 +18,5 @@ To change subfolder that the app is served from, edit:
 * `preact.config.js`: line `13`, `const productionSubfolder`
 * `src/manifest.json`: lines `4` and `5`, `start_url` and `scope`
 * `.htaccess`: lines `4` and `9`, `RewriteBase` and `RewriteRule`
+* `package.json`: line `7`, `preact build --dest` option
+* `.gitignore`: lines `4` and `5`
