@@ -22,4 +22,5 @@ export default {
     total: item.time * 60,
     elapsed: 0,
   })),
+  resetDialogVisible: false,
 } as StoreContent;

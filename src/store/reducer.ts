@@ -41,12 +41,12 @@ const timeslotTick = (store: StoreContent, slot: TimeSlot): StoreContent => ({
   ...store,
   prepTimes: store.prepTimes.map((time) => ({
     ...time,
-    elapsed: slot === time ? time.elapsed + 1 : time.elapsed,
+    elapsed: slot.label === time.label ? time.elapsed + 1 : time.elapsed,
   })),
   speakers: store.speakers.map((party) => party.map(
     (item) => ({
       ...item,
-      elapsed: slot === item ? item.elapsed + 1 : item.elapsed,
+      elapsed: slot.label === item.label ? item.elapsed + 1 : item.elapsed,
     }),
   )),
 });
