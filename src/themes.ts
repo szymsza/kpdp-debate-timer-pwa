@@ -4,7 +4,7 @@ type ThemeColour = 'dark' | 'light';
 type ThemeColourOption = ThemeColour | 'auto';
 
 export const getActiveThemeColourOption = (): ThemeColourOption => {
-  const storedValue = localStorage.getItem(themesLocalStorageKey);
+  const storedValue = typeof window !== 'undefined' ? localStorage.getItem(themesLocalStorageKey) : null;
   if (storedValue !== null) {
     return <ThemeColourOption>storedValue;
   }
@@ -17,7 +17,7 @@ export const getActiveThemeColour = (): ThemeColour => {
 
   if (theme === 'auto') {
     // OS theme detected as dark
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       theme = 'dark';
     } else {
       theme = 'light';

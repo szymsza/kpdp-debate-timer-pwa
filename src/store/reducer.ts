@@ -27,7 +27,9 @@ const setScreen = (
 };
 
 const setTheme = (store: StoreContent, value: string): StoreContent => {
-  localStorage.setItem(themesLocalStorageKey, value);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(themesLocalStorageKey, value);
+  }
   activateThemeColour();
   return {
     ...store,
