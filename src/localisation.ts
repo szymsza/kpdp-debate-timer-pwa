@@ -6,7 +6,7 @@ const localisation: Record<string, string> = {
   colourModeAuto: 'Auto',
   colourModeDark: 'Tmavý',
   colourModeLight: 'Světlý',
-  ok: 'OK',
+  ok: 'Ano',
   negative: 'Negace',
   pause: 'Pozastavit',
   preptime: 'Přípravný čas',

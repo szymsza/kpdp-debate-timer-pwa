@@ -2,6 +2,7 @@ import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../store';
 import Back from '../Icons/Back';
+import localisation from '../../localisation';
 
 const Navbar: FunctionalComponent = () => {
   const { dispatch } = useContext(Context);
@@ -21,7 +22,7 @@ const Navbar: FunctionalComponent = () => {
         <Back />
       </button>
       <h1 className="nav__heading">
-        Debatní stopky
+        {localisation.title}
       </h1>
       <span className="nav__filler" />
     </nav>

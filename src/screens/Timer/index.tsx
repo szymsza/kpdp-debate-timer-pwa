@@ -10,6 +10,7 @@ import { getActiveTimeSlot } from '../../store/getters';
 import { Context } from '../../store';
 import { TimeSlot } from '../../types';
 import { Dispatch } from '../../store/types';
+import localisation from '../../localisation';
 
 // Called each time active time slot changes/time ticks
 const tickTimer = (activeTimeSlot: TimeSlot | undefined, dispatch: Dispatch) => {
@@ -50,10 +51,10 @@ const Timer: FunctionalComponent = () => {
       {store.resetDialogVisible && (
         <Dialog
           cancel={{
-            title: 'Zrušit',
+            title: localisation.cancel,
           }}
           confirm={{
-            title: 'Ano',
+            title: localisation.ok,
             onClick: () => dispatch({
               type: 'RESET',
               payload: null,
@@ -65,7 +66,7 @@ const Timer: FunctionalComponent = () => {
           })}
         >
           <p>
-            Opravdu si přejete stopky resetovat?
+            {localisation.resetConfirm}
           </p>
         </Dialog>
       )}

@@ -5,6 +5,7 @@ import { Dispatch } from '../../store/types';
 import Navbar from '../../components/Navbar';
 import Radio from '../../components/Radio';
 import About from '../../components/About';
+import localisation from '../../localisation';
 
 const setActiveTheme = (newValue: string, dispatch: Dispatch): void => {
   dispatch({
@@ -20,7 +21,7 @@ const Settings: FunctionalComponent = () => {
     <main className="screen screen--settings">
       <Navbar />
       <Radio
-        label="Barevný režim:"
+        label={`${localisation.colourMode}:`}
         options={store.themes}
         onChange={(newValue) => setActiveTheme(newValue, dispatch)}
       />

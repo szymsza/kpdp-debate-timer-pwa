@@ -4,6 +4,7 @@ import { Context } from '../../store';
 import { Dispatch } from '../../store/types';
 import { getActivePrepTime, getSelectedSpeaker } from '../../store/getters';
 import Button from '../Button';
+import localisation from '../../localisation';
 
 const toggleActivePrepTime = (dispatch: Dispatch, label: string) => {
   dispatch({
@@ -19,7 +20,7 @@ const PrepTime: FunctionalComponent = () => {
 
   return (
     <section className="preptime">
-      <h2 className="preptime__heading">Přípravný čas</h2>
+      <h2 className="preptime__heading">{localisation.preptime}</h2>
       {
         store.prepTimes.map((time) => (
           <Button
