@@ -25,10 +25,11 @@ const PrepTime: FunctionalComponent = () => {
           <Button
             title={time.label}
             className="preptime__button"
-            active={time.active}
-            disabled={(activePrepTime && activePrepTime !== time) || !activeSpeaker.paused}
-            inverse
             time={time}
+            active={time.active}
+            inverse
+            disabled={(activePrepTime && activePrepTime !== time) || !activeSpeaker.paused}
+            display="remaining"
             onClick={() => toggleActivePrepTime(dispatch, time.label)}
           />
         ))

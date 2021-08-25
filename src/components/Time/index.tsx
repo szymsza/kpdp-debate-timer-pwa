@@ -1,10 +1,12 @@
 import { FunctionalComponent, h } from 'preact';
 import { TimeSlot } from '../../types';
 
+export type TimeDisplayOptions = 'elapsed' | 'remaining';
+
 interface TimeProps {
   className?: string
   time: TimeSlot
-  display: 'elapsed' | 'remaining'
+  display: TimeDisplayOptions
 }
 
 const getTimeString = (seconds: number): string => {
