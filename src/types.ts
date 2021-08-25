@@ -1,4 +1,6 @@
-export type Screen = 'timer' | 'settings';
+export const screens = ['timer', 'settings'] as const;
+
+export type Screen = typeof screens[number];
 
 export interface TimeSlotConfig {
   label: string

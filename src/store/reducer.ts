@@ -1,12 +1,30 @@
 import { StoreAction, StoreContent } from './types';
-import { Screen, TimeSlot } from '../types';
+import { Screen, screens, TimeSlot } from '../types';
 import initialStore from './initialStore';
 import { activateThemeColour, themesLocalStorageKey } from '../themes';
 
-const setScreen = (store: StoreContent, screen: Screen): StoreContent => ({
-  ...store,
-  screen,
-});
+const setScreen = (
+  store: StoreContent,
+  { screen, pushHistory = true }: {
+    screen: string,
+    pushHistory: boolean,
+  },
+): StoreContent => {
+  // screenSafe will include only valid type Screen
+  let screenSafe: string = screen;
+  if (!screens.includes(<Screen>screenSafe)) {
+    [screenSafe] = screens;
+  }
+
+  if (pushHistory) {
+    window.history.pushState(screenSafe, document.title, `/${screenSafe}`);
+  }
+
+  return {
+    ...store,
+    screen: screenSafe as Screen,
+  };
+};
 
 const setTheme = (store: StoreContent, value: string): StoreContent => {
   localStorage.setItem(themesLocalStorageKey, value);
@@ -92,7 +110,10 @@ const togglePausedTimer = (store: StoreContent): StoreContent => ({
 const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
   switch (action.type) {
     case 'SET_SCREEN':
-      return setScreen(store, action.payload);
+      return setScreen(store, typeof action.payload !== 'string' ? action.payload : {
+        screen: action.payload,
+        pushHistory: true,
+      });
     case 'SET_THEME':
       return setTheme(store, action.payload);
     case 'SET_SELECTED_SPEAKER':
