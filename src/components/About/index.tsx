@@ -1,14 +1,10 @@
 import { FunctionalComponent, h } from 'preact';
-import { useContext } from 'preact/hooks';
-import { Context } from '../../store';
 import AdkLogoLight from '../../assets/adk-logo.png';
 import AdkLogoDark from '../../assets/adk-logo-dark.png';
+import { getActiveThemeColour } from '../../themes';
 
 const About: FunctionalComponent = () => {
-  const { store } = useContext(Context);
-
-  // TODO - deal with 'auto' value (+ use some global selector)
-  const isDarkTheme = store.themes.find((item) => item.value === 'dark')!.active;
+  const isDarkTheme = getActiveThemeColour() === 'dark';
 
   return (
     <section className="about">

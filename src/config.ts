@@ -1,20 +1,22 @@
 import { TimeSlotConfig } from './types';
 import localisation from './localisation';
 import { RadioOption } from './components/Radio';
+import { getActiveThemeColourOption } from './themes';
 
+const activeColourTheme = getActiveThemeColourOption();
 export const themes: RadioOption[] = [{
   label: localisation.colourModeAuto,
   value: 'auto',
-  active: true,
 }, {
   label: localisation.colourModeDark,
   value: 'dark',
-  active: false,
 }, {
   label: localisation.colourModeLight,
   value: 'light',
-  active: false,
-}];
+}].map((item) => ({
+  ...item,
+  active: item.value === activeColourTheme,
+}));
 
 const speechTimes: Record<string, number> = {
   constructive: 6,

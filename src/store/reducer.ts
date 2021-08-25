@@ -1,6 +1,7 @@
 import { StoreAction, StoreContent } from './types';
 import { Screen, TimeSlot } from '../types';
 import initialStore from './initialStore';
+import { activateThemeColour, themesLocalStorageKey } from '../themes';
 
 const setScreen = (store: StoreContent, screen: Screen): StoreContent => ({
   ...store,
@@ -8,8 +9,8 @@ const setScreen = (store: StoreContent, screen: Screen): StoreContent => ({
 });
 
 const setTheme = (store: StoreContent, value: string): StoreContent => {
-  // TODO - save to local storage
-  document.body.setAttribute('data-theme', value);
+  localStorage.setItem(themesLocalStorageKey, value);
+  activateThemeColour();
   return {
     ...store,
     themes: store.themes.map((item) => ({

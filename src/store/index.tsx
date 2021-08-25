@@ -6,7 +6,6 @@ import initialStore from './initialStore';
 
 /* TODO create global store
     - screen - connect to URL
-    - theme colour - get from local storage/@media if auto
 */
 
 export const Context = createContext({
