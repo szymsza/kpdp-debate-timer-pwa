@@ -14,6 +14,12 @@ const Toolbar: FunctionalComponent = () => {
         title="Resetovat"
         icon="reset"
         disabled={timeRunning}
+        onClick={() => {
+          dispatch({
+            type: 'TOGGLE_RESET_DIALOG',
+            payload: true,
+          });
+        }}
       />
       <ToolbarButton
         title="Nastavení"

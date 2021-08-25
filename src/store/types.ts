@@ -8,6 +8,7 @@ export interface StoreContent {
   themes: RadioOption[]
   speakers: SpeakerTimeSlot[][]
   prepTimes: PrepTimeSlot[]
+  resetDialogVisible: boolean
 }
 
 export type StoreActionType =
@@ -17,6 +18,7 @@ export type StoreActionType =
   | 'TOGGLE_ACTIVE_PREP_TIME'
   | 'TIMESLOT_TICK'
   | 'RESET'
+  | 'TOGGLE_RESET_DIALOG'
   | 'TOGGLE_PAUSED_TIMER';
 
 export interface StoreAction {

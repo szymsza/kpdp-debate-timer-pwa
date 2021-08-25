@@ -1,9 +1,8 @@
 import { FunctionalComponent, h } from 'preact';
-import { StateUpdater } from 'preact/hooks';
 import DialogButton from './DialogButton';
 import { ButtonOnClickEvent } from '../Button';
 
-type SetVisibleUpdater = StateUpdater<boolean>;
+type SetVisibleUpdater = (visible: boolean) => void;
 
 interface DialogButtonOptions {
   title: string

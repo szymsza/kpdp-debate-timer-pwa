@@ -57,6 +57,11 @@ const reset = (store: StoreContent): StoreContent => ({
   prepTimes: initialStore.prepTimes,
 });
 
+const toggleResetDialog = (store: StoreContent, visible: boolean): StoreContent => ({
+  ...store,
+  resetDialogVisible: visible,
+});
+
 const togglePausedTimer = (store: StoreContent): StoreContent => ({
   ...store,
   speakers: store.speakers.map((party) => party.map(
@@ -81,6 +86,8 @@ const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
       return timeslotTick(store, action.payload);
     case 'RESET':
       return reset(store);
+    case 'TOGGLE_RESET_DIALOG':
+      return toggleResetDialog(store, action.payload);
     case 'TOGGLE_PAUSED_TIMER':
       return togglePausedTimer(store);
     default:

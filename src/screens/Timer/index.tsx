@@ -11,8 +11,6 @@ import { Context } from '../../store';
 import { TimeSlot } from '../../types';
 
 const Timer: FunctionalComponent = () => {
-  const [resetDialogVisible, setResetDialogVisible] = useState<boolean>(false);
-
   const { store, dispatch } = useContext(Context);
   const activeTimeSlot: TimeSlot | undefined = getActiveTimeSlot(store);
 
@@ -40,17 +38,22 @@ const Timer: FunctionalComponent = () => {
       <Speakers />
       <PrepTime />
       <Toolbar />
-      {resetDialogVisible && (
+      {store.resetDialogVisible && (
         <Dialog
           cancel={{
             title: 'Zrušit',
-            onClick: () => {},
           }}
           confirm={{
             title: 'Ano',
-            onClick: () => {},
+            onClick: () => dispatch({
+              type: 'RESET',
+              payload: null,
+            }),
           }}
-          setVisible={setResetDialogVisible}
+          setVisible={(visible: boolean) => dispatch({
+            type: 'TOGGLE_RESET_DIALOG',
+            payload: visible,
+          })}
         >
           <p>
             Opravdu si přejete stopky resetovat?
