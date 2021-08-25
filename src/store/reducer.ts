@@ -31,26 +31,35 @@ const setSelectedSpeaker = (store: StoreContent, label: string): StoreContent =>
 
 const toggleActivePrepTime = (store: StoreContent, label: string): StoreContent => ({
   ...store,
-  prepTimes: store.prepTimes.map((time) => ({
-    ...time,
-    active: time.label === label && !time.active,
-    timeStartedDate: time.label === label && !time.active ? Date.now() : null,
-  })),
+  prepTimes: store.prepTimes.map((time) => {
+    const shouldBeActive = time.label === label && !time.active;
+    return {
+      ...time,
+      active: shouldBeActive,
+      timeStartedDate: shouldBeActive ? Date.now() : null,
+    };
+  }),
 });
 
 const timeslotTick = (store: StoreContent, slot: TimeSlot): StoreContent => ({
   ...store,
-  prepTimes: store.prepTimes.map((time) => ({
-    ...time,
-    elapsed: slot.label === time.label ? time.elapsed + 1 : time.elapsed,
-    timeStartedDate: slot.label === time.label ? time.timeStartedDate! + 1000 : null,
-  })),
+  prepTimes: store.prepTimes.map((time) => {
+    const isActive = slot.label === time.label;
+    return {
+      ...time,
+      elapsed: isActive ? time.elapsed + 1 : time.elapsed,
+      timeStartedDate: isActive ? time.timeStartedDate! + 1000 : null,
+    };
+  }),
   speakers: store.speakers.map((party) => party.map(
-    (item) => ({
-      ...item,
-      elapsed: slot.label === item.label ? item.elapsed + 1 : item.elapsed,
-      timeStartedDate: slot.label === item.label ? item.timeStartedDate! + 1000 : null,
-    }),
+    (item) => {
+      const isActive = slot.label === item.label;
+      return {
+        ...item,
+        elapsed: isActive ? item.elapsed + 1 : item.elapsed,
+        timeStartedDate: isActive ? item.timeStartedDate! + 1000 : null,
+      };
+    },
   )),
 });
 
@@ -68,11 +77,14 @@ const toggleResetDialog = (store: StoreContent, visible: boolean): StoreContent 
 const togglePausedTimer = (store: StoreContent): StoreContent => ({
   ...store,
   speakers: store.speakers.map((party) => party.map(
-    (speaker) => ({
-      ...speaker,
-      paused: !speaker.selected || !speaker.paused,
-      timeStartedDate: !speaker.selected || !speaker.paused ? null : Date.now(),
-    }),
+    (speaker) => {
+      const shouldBeActive = speaker.selected && speaker.paused;
+      return {
+        ...speaker,
+        paused: !shouldBeActive,
+        timeStartedDate: shouldBeActive ? Date.now() : null,
+      };
+    },
   )),
 });
 
