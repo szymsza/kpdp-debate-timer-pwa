@@ -17,15 +17,21 @@ const tickTimer = (activeTimeSlot: TimeSlot | undefined, dispatch: Dispatch) => 
     return undefined;
   }
 
-  const interval: ReturnType<typeof setTimeout> = setTimeout(() => {
+  const interval: ReturnType<typeof setInterval> = setInterval(() => {
+    const sinceLastTick = Date.now() - activeTimeSlot.timeStartedDate!;
+
+    if (sinceLastTick < 975) {
+      return;
+    }
+
     dispatch({
       type: 'TIMESLOT_TICK',
       payload: activeTimeSlot,
     });
-  }, 1000);
+  }, 75);
 
   return () => {
-    clearTimeout(interval);
+    clearInterval(interval);
   };
 };
 

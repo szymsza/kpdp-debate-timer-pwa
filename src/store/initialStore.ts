@@ -13,6 +13,7 @@ export default {
         selected: speakerIndex === 0 && partyIndex === speakerIndex,
         total: speaker.time * 60,
         elapsed: 0,
+        timeStartedDate: null,
       }),
     ),
   ),
@@ -21,6 +22,7 @@ export default {
     active: false,
     total: item.time * 60,
     elapsed: 0,
+    timeStartedDate: null,
   })),
   resetDialogVisible: false,
 } as StoreContent;

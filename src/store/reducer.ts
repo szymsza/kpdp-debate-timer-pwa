@@ -34,6 +34,7 @@ const toggleActivePrepTime = (store: StoreContent, label: string): StoreContent 
   prepTimes: store.prepTimes.map((time) => ({
     ...time,
     active: time.label === label && !time.active,
+    timeStartedDate: time.label === label && !time.active ? Date.now() : null,
   })),
 });
 
@@ -42,11 +43,13 @@ const timeslotTick = (store: StoreContent, slot: TimeSlot): StoreContent => ({
   prepTimes: store.prepTimes.map((time) => ({
     ...time,
     elapsed: slot.label === time.label ? time.elapsed + 1 : time.elapsed,
+    timeStartedDate: slot.label === time.label ? time.timeStartedDate! + 1000 : null,
   })),
   speakers: store.speakers.map((party) => party.map(
     (item) => ({
       ...item,
       elapsed: slot.label === item.label ? item.elapsed + 1 : item.elapsed,
+      timeStartedDate: slot.label === item.label ? item.timeStartedDate! + 1000 : null,
     }),
   )),
 });
@@ -68,6 +71,7 @@ const togglePausedTimer = (store: StoreContent): StoreContent => ({
     (speaker) => ({
       ...speaker,
       paused: !speaker.selected || !speaker.paused,
+      timeStartedDate: !speaker.selected || !speaker.paused ? null : Date.now(),
     }),
   )),
 });
