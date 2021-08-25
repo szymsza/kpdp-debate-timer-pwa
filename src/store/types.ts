@@ -15,6 +15,7 @@ export type StoreActionType =
   | 'SET_THEME'
   | 'SET_SELECTED_SPEAKER'
   | 'TOGGLE_ACTIVE_PREP_TIME'
+  | 'TIMESLOT_TICK'
   | 'RESET'
   | 'TOGGLE_PAUSED_TIMER';
 

@@ -1,5 +1,5 @@
 import { StoreAction, StoreContent } from './types';
-import { Screen } from '../types';
+import { Screen, TimeSlot } from '../types';
 import initialStore from './initialStore';
 
 const setScreen = (store: StoreContent, screen: Screen): StoreContent => ({
@@ -37,6 +37,20 @@ const toggleActivePrepTime = (store: StoreContent, label: string): StoreContent 
   })),
 });
 
+const timeslotTick = (store: StoreContent, slot: TimeSlot): StoreContent => ({
+  ...store,
+  prepTimes: store.prepTimes.map((time) => ({
+    ...time,
+    elapsed: slot === time ? time.elapsed + 1 : time.elapsed,
+  })),
+  speakers: store.speakers.map((party) => party.map(
+    (item) => ({
+      ...item,
+      elapsed: slot === item ? item.elapsed + 1 : item.elapsed,
+    }),
+  )),
+});
+
 const reset = (store: StoreContent): StoreContent => ({
   ...store,
   speakers: initialStore.speakers,
@@ -63,6 +77,8 @@ const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
       return setSelectedSpeaker(store, action.payload);
     case 'TOGGLE_ACTIVE_PREP_TIME':
       return toggleActivePrepTime(store, action.payload);
+    case 'TIMESLOT_TICK':
+      return timeslotTick(store, action.payload);
     case 'RESET':
       return reset(store);
     case 'TOGGLE_PAUSED_TIMER':
