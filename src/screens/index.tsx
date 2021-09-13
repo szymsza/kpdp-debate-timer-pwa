@@ -29,6 +29,12 @@ const Screens: FunctionalComponent = () => {
         pushHistory: false,
       },
     });
+
+    // Hide page preloader
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.remove();
+    }
   }, []);
 
   return (

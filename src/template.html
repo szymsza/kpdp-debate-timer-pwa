@@ -23,8 +23,147 @@
         <link href="assets/icons/apple-touch-icon.png" sizes="640x1136" rel="apple-touch-startup-image" />
 
         <% preact.headEnd %>
+        <style>
+            #preloader {
+                --bg: #FFFFFF;
+                --font: #000000;
+                --size: .5rem;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                #preloader {
+                    --bg: #000000;
+                    --font: #FFFFFF;
+                }
+            }
+
+            #preloader {
+                left: 0;
+                position: fixed;
+                top: 0;
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: center;
+                width: 100%;
+                color: var(--font);
+                background-color: var(--bg);
+            }
+
+            /* Source: https://loading.io/css/ */
+            #preloader-spinner {
+                color: inherit;
+                display: inline-block;
+                position: relative;
+                width: calc(5 * var(--size));
+                height: calc(5 * var(--size));
+            }
+
+            #preloader-spinner div {
+                transform-origin: calc(2.5 * var(--size)) calc(2.5 * var(--size));
+                animation: lds-spinner 1.2s linear infinite;
+            }
+
+            #preloader-spinner div:after {
+                content: " ";
+                display: block;
+                position: absolute;
+                top: calc(0.1875 * var(--size));
+                left: calc(2.313 * var(--size));
+                width: calc(0.375 * var(--size));
+                height: calc(1.125 * var(--size));
+                border-radius: 20%;
+                background: #fff;
+            }
+
+            #preloader-spinner div:nth-child(1) {
+                transform: rotate(0deg);
+                animation-delay: -1.1s;
+            }
+
+            #preloader-spinner div:nth-child(2) {
+                transform: rotate(30deg);
+                animation-delay: -1s;
+            }
+
+            #preloader-spinner div:nth-child(3) {
+                transform: rotate(60deg);
+                animation-delay: -0.9s;
+            }
+
+            #preloader-spinner div:nth-child(4) {
+                transform: rotate(90deg);
+                animation-delay: -0.8s;
+            }
+
+            #preloader-spinner div:nth-child(5) {
+                transform: rotate(120deg);
+                animation-delay: -0.7s;
+            }
+
+            #preloader-spinner div:nth-child(6) {
+                transform: rotate(150deg);
+                animation-delay: -0.6s;
+            }
+
+            #preloader-spinner div:nth-child(7) {
+                transform: rotate(180deg);
+                animation-delay: -0.5s;
+            }
+
+            #preloader-spinner div:nth-child(8) {
+                transform: rotate(210deg);
+                animation-delay: -0.4s;
+            }
+
+            #preloader-spinner div:nth-child(9) {
+                transform: rotate(240deg);
+                animation-delay: -0.3s;
+            }
+
+            #preloader-spinner div:nth-child(10) {
+                transform: rotate(270deg);
+                animation-delay: -0.2s;
+            }
+
+            #preloader-spinner div:nth-child(11) {
+                transform: rotate(300deg);
+                animation-delay: -0.1s;
+            }
+
+            #preloader-spinner div:nth-child(12) {
+                transform: rotate(330deg);
+                animation-delay: 0s;
+            }
+
+            @keyframes lds-spinner {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+
+        </style>
     </head>
     <body>
         <% preact.bodyEnd %>
+        <div id="preloader">
+            <div id="preloader-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     </body>
 </html>
