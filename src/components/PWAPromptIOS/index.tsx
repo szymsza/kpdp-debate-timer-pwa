@@ -8,6 +8,10 @@ import SafariAddToHomescreen from '../Icons/SafariAddToHomescreen';
 const promptVisibleLocalStorageKey = 'PWAPromptIOSVisible';
 
 const isAppleDevice = (): boolean => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
   const isIOS = /iphone|ipad|ipod/.test(
     window.navigator.userAgent.toLowerCase(),
   );
@@ -16,9 +20,7 @@ const isAppleDevice = (): boolean => {
   return isIOS || isIPadOS;
 };
 
-const isOpenAsApp = (): boolean => {
-  return 'standalone' in window.navigator && (window.navigator as Record<string, never>).standalone;
-};
+const isOpenAsApp = (): boolean => typeof window !== 'undefined' && 'standalone' in window.navigator && (window.navigator as Record<string, never>).standalone;
 
 const PWAPromptIOS: FunctionalComponent = () => {
   if (!isAppleDevice() || isOpenAsApp()) {
