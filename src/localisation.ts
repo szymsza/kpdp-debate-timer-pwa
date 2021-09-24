@@ -2,6 +2,7 @@ const localisation: Record<string, string> = {
   about: 'Jakékoliv připomínky či nápady neváhejte sdělit na:',
   affirmative: 'Afirmace',
   cancel: 'Zrušit',
+  close: 'Zavřít',
   colourMode: 'Barevný režim',
   colourModeAuto: 'Auto',
   colourModeDark: 'Tmavý',

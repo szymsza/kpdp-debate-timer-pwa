@@ -1,0 +1,31 @@
+@import "../../style/variables"
+
+.dialog__content
+    .pwa-prompt__paragraph
+        line-height: 2
+
+.pwa-prompt__list
+    margin: 0
+    padding-left: 0
+    counter-reset: dialog-ordered-list
+
+.pwa-prompt__list-item
+    display: flex
+    min-height: 3.5rem
+    padding: .5rem 0
+    line-height: 1.5
+    align-items: center
+
+    &::before
+        counter-increment: dialog-ordered-list
+        content: counter(dialog-ordered-list) "."
+        margin-right: .5rem
+
+.pwa-prompt__icon
+    margin-left: auto
+    padding-left: .5rem
+
+    svg
+        height: 2rem
+        width: 2rem
+        fill: var(--bg-accent)

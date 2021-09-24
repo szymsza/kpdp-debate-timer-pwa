@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'preact/hooks';
 import { Context } from '../store';
 import Settings from './Settings';
 import Timer from './Timer';
+import PWAPromptIOS from '../components/PWAPromptIOS';
 
 const Screens: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
@@ -41,6 +42,7 @@ const Screens: FunctionalComponent = () => {
     <Fragment>
       {store.screen === 'timer' && <Timer />}
       {store.screen === 'settings' && <Settings />}
+      <PWAPromptIOS />
     </Fragment>
   );
 };
