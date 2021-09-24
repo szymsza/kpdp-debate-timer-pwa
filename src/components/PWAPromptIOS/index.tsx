@@ -12,22 +12,21 @@ const PWAPromptIOS: FunctionalComponent = () => (
     setVisible={() => {
     }}
   >
-    <h3>Nainstalujte si Debatní stopky</h3>
+    <h3>{localisation.pwaPromptIOSTitle}</h3>
     <p className="pwa-prompt__paragraph">
-      Abyste měli stopky uložené mezi aplikacemi a mohli je používat offline, je potřeba
-      je nainstalovat:
+      {localisation.pwaPromptIOSParagraph}
     </p>
     <ol className="pwa-prompt__list">
       <li className="pwa-prompt__list-item">
-        Otevřete menu prohlížeče
+        {localisation.pwaPromptIOSOpenMenu}
         <span className="pwa-prompt__icon"><SafariOpenMenu /></span>
       </li>
       <li className="pwa-prompt__list-item">
-        Vyberte možnost Přidat na plochu
+        {localisation.pwaPromptIOSAddToHomescreen}
         <span className="pwa-prompt__icon"><SafariAddToHomescreen /></span>
       </li>
       <li className="pwa-prompt__list-item">
-        Potvrďte instalaci a je hotovo!
+        {localisation.pwaPromptIOSDone}
       </li>
     </ol>
   </Dialog>
