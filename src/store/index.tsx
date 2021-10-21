@@ -4,10 +4,6 @@ import reducer from './reducer';
 import { Dispatch, StoreAction, StoreContent } from './types';
 import initialStore from './initialStore';
 
-/* TODO create global store
-    - screen - connect to URL
-*/
-
 export const Context = createContext({
   store: initialStore,
   dispatch: (() => {
