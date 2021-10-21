@@ -9,6 +9,7 @@ export default {
     (party, partyIndex) => party.map(
       (speaker, speakerIndex) => ({
         ...speaker,
+        party: partyIndex === 0 ? 'affirmative' : 'negative',
         paused: true,
         selected: speakerIndex === 0 && partyIndex === speakerIndex,
         total: speaker.time * 60,
@@ -17,8 +18,9 @@ export default {
       }),
     ),
   ),
-  prepTimes: prepTimes.map((item) => ({
+  prepTimes: prepTimes.map((item, itemIndex) => ({
     ...item,
+    party: itemIndex === 0 ? 'affirmative' : 'negative',
     active: false,
     total: item.time * 60,
     elapsed: 0,

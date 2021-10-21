@@ -30,6 +30,7 @@ const PrepTime: FunctionalComponent = () => {
             active={time.active}
             inverse
             disabled={(activePrepTime && activePrepTime !== time) || !activeSpeaker.paused}
+            party={time.party}
             display="remaining"
             onClick={() => toggleActivePrepTime(dispatch, time.label)}
           />

@@ -28,6 +28,7 @@ const Speakers: FunctionalComponent = () => {
                   className="speakers__button"
                   active={speaker.selected}
                   disabled={timeRunning}
+                  party={speaker.party}
                   time={speaker}
                   onClick={() => setSelectedSpeaker(dispatch, speaker.label)}
                 />

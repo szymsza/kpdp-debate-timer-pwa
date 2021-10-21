@@ -17,9 +17,24 @@
     --title-font-size: .9rem
     --subtitle-font-size: .75rem
 
+.button--affirmative
+    --bg-accent: var(--party-affirmative)
+
+    .button__title
+        color: var(--party-affirmative-font)
+
+.button--negative
+    --bg-accent: var(--party-negative)
+
+    .button__title
+        color: var(--party-negative-font)
+
 .button--active
     color: var(--font-accent)
     background-color: var(--bg-accent)
+
+    .button__title
+        color: inherit
 
     .button__subtitle
         color: inherit
@@ -31,7 +46,6 @@
         font-size: var(--subtitle-font-size)
 
     .button__subtitle
-        color: inherit
         font-size: var(--title-font-size)
 
 .button--disabled
