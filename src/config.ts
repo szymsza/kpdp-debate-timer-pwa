@@ -29,33 +29,33 @@ export const speakers: TimeSlotConfig[][] = [
     label: 'A1',
     time: speechTimes.constructive,
   }, {
-    label: 'A2',
-    time: speechTimes.constructive,
-  }, {
-    label: 'A3',
-    time: speechTimes.closing,
-  }, {
     label: 'A3 ➝ N1',
     time: speechTimes.questions,
   }, {
+    label: 'A2',
+    time: speechTimes.constructive,
+  }, {
     label: 'A1 ➝ N2',
     time: speechTimes.questions,
+  }, {
+    label: 'A3',
+    time: speechTimes.closing,
   }],
   [{
+    label: 'N3 ➝ A1',
+    time: speechTimes.questions,
+  }, {
     label: 'N1',
     time: speechTimes.constructive,
+  }, {
+    label: 'N1 ➝ A2',
+    time: speechTimes.questions,
   }, {
     label: 'N2',
     time: speechTimes.constructive,
   }, {
     label: 'N3',
     time: speechTimes.closing,
-  }, {
-    label: 'N3 ➝ A1',
-    time: speechTimes.questions,
-  }, {
-    label: 'N1 ➝ A2',
-    time: speechTimes.questions,
   }],
 ];
 
