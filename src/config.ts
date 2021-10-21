@@ -35,10 +35,10 @@ export const speakers: TimeSlotConfig[][] = [
     label: 'A3',
     time: speechTimes.closing,
   }, {
-    label: 'N3 ➝ A1',
+    label: 'A3 ➝ N1',
     time: speechTimes.questions,
   }, {
-    label: 'N1 ➝ A2',
+    label: 'A1 ➝ N2',
     time: speechTimes.questions,
   }],
   [{
@@ -51,10 +51,10 @@ export const speakers: TimeSlotConfig[][] = [
     label: 'N3',
     time: speechTimes.closing,
   }, {
-    label: 'A3 ➝ N1',
+    label: 'N3 ➝ A1',
     time: speechTimes.questions,
   }, {
-    label: 'A1 ➝ N2',
+    label: 'N1 ➝ A2',
     time: speechTimes.questions,
   }],
 ];
