@@ -1,10 +1,13 @@
 import { StoreContent } from './types';
-import { prepTimes, speakers, themes } from '../config';
+import {
+  modes, prepTimes, speakers, themes,
+} from '../config';
 import { Screen } from '../types';
 
 export default {
   screen: 'timer' as Screen,
   themes,
+  modes,
   speakers: speakers.map(
     (party, partyIndex) => party.map(
       (speaker, speakerIndex) => ({

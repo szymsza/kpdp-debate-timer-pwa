@@ -1,7 +1,8 @@
 import { StoreAction, StoreContent } from './types';
 import { Screen, screens, TimeSlot } from '../types';
 import initialStore from './initialStore';
-import { activateThemeColour, themesLocalStorageKey } from '../themes';
+import { activateThemeColour } from '../themes';
+import { setActiveOption } from '../localStorage';
 
 const setScreen = (
   store: StoreContent,
@@ -27,13 +28,22 @@ const setScreen = (
 };
 
 const setTheme = (store: StoreContent, value: string): StoreContent => {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(themesLocalStorageKey, value);
-  }
+  setActiveOption('theme', value);
   activateThemeColour();
   return {
     ...store,
     themes: store.themes.map((item) => ({
+      ...item,
+      active: item.value === value,
+    })),
+  };
+};
+
+const setMode = (store: StoreContent, value: string): StoreContent => {
+  setActiveOption('mode', value);
+  return {
+    ...store,
+    modes: store.modes.map((item) => ({
       ...item,
       active: item.value === value,
     })),
@@ -118,6 +128,8 @@ const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
       });
     case 'SET_THEME':
       return setTheme(store, action.payload);
+    case 'SET_MODE':
+      return setMode(store, action.payload);
     case 'SET_SELECTED_SPEAKER':
       return setSelectedSpeaker(store, action.payload);
     case 'TOGGLE_ACTIVE_PREP_TIME':

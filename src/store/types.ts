@@ -6,6 +6,7 @@ import { RadioOption } from '../components/Radio';
 export interface StoreContent {
   screen: Screen
   themes: RadioOption[]
+  modes: RadioOption[]
   speakers: SpeakerTimeSlot[][]
   prepTimes: PrepTimeSlot[]
   resetDialogVisible: boolean
@@ -14,6 +15,7 @@ export interface StoreContent {
 export type StoreActionType =
   'SET_SCREEN'
   | 'SET_THEME'
+  | 'SET_MODE'
   | 'SET_SELECTED_SPEAKER'
   | 'TOGGLE_ACTIVE_PREP_TIME'
   | 'TIMESLOT_TICK'

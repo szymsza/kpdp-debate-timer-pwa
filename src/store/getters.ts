@@ -1,8 +1,14 @@
 import { StoreContent } from './types';
 import { PrepTimeSlot, SpeakerTimeSlot, TimeSlot } from '../types';
+import { Mode } from '../modes';
 
 export const getSelectedSpeaker = (store: StoreContent): SpeakerTimeSlot => (
   store.speakers.flat().find((speaker) => speaker.selected)!
+);
+
+// Get active mode from store
+export const getActiveStoreMode = (store: StoreContent): Mode => <Mode>(
+  store.modes.find((item) => item.active)!.value
 );
 
 export const getActivePrepTime = (store: StoreContent): PrepTimeSlot | undefined => (
