@@ -6,11 +6,13 @@
     justify-content: space-evenly
     text-align: center
 
-.header__time
+.main-time
     display: block
-    margin: 1vh 0
     font-size: 9vh
     font-weight: 300
+
+.header__time
+    margin: 1vh 0
 
 .header__time--disabled
     opacity: calc(var(--disabled-opacity) - .25)
@@ -22,7 +24,7 @@
     width: 60%
 
 @media #{$iPhone6}
-    .header__time
+    .main-time
         font-size: 10vh
 
 @media #{$iPhone6}
@@ -44,6 +46,8 @@
 
     .header__time
         margin: 0 0 1rem
+
+    .main-time
         font-size: 7vw
 
     .header__button

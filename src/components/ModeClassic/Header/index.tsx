@@ -24,7 +24,7 @@ const Header: FunctionalComponent = () => {
       <Time
         time={activeSpeaker}
         display="remaining"
-        className={`header__time ${activePrepTime ? 'header__time--disabled' : ''}`}
+        className={`main-time header__time ${activePrepTime ? 'header__time--disabled' : ''}`}
       />
       <div className="header__button-wrapper">
         <Button

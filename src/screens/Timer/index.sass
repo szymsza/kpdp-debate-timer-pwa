@@ -5,24 +5,26 @@
     flex-direction: column
     justify-content: space-between
 
-.header, .speakers, .preptime
+.header, .speakers, .preptime, .time-slots-carousel
     flex-grow: 1
 
-.speakers, .preptime
+.speakers, .preptime, .time-slots-carousel
+    --padding-x: 1rem
     align-self: center
+    max-width: calc(#{$maxContainerWidth} + (var(--padding-x) * 2))
+    width: 100vw
+
+.speakers, .preptime
     display: flex
     flex-direction: row
     flex-wrap: wrap
     justify-content: space-evenly
-    --padding-x: 1rem
-    max-width: calc(#{$maxContainerWidth} + (var(--padding-x) * 2))
-    width: 100vw
 
 .speakers__column, .preptime__button
     width: calc((100% - (var(--padding-x) * 3)) / 2)
 
 @media #{$iPad}
-    .speakers, .preptime
+    .speakers, .preptime, .time-slots-carousel
         justify-content: space-between
         --padding-x: 4rem
         max-width: $maxContainerWidth

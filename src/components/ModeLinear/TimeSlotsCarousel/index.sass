@@ -1,0 +1,32 @@
+@import "../../../style/variables"
+
+.time-slots-carousel
+    padding: var(--padding-x) var(--padding-x) Min(calc(2 * var(--padding-x)), 4rem)
+
+.time-slots-carousel__card
+    display: flex
+    height: 100%
+    width: calc(100% - 2rem)
+    align-items: center
+    justify-content: center
+    position: relative
+    background-color: var(--party-colour)
+    color: var(--font-accent)
+    border: 1px solid var(--party-colour)
+    border-radius: .5rem
+
+    &.time-slots-carousel__card--affirmative
+        --party-colour: var(--party-affirmative)
+
+    &.time-slots-carousel__card--negative
+        --party-colour: var(--party-negative)
+
+.time-slots-carousel__card-label
+    position: absolute
+    left: 1rem
+    top: 1rem
+
+@media #{$iPad}
+    .time-slots-carousel
+        padding-left: 0
+        padding-right: 0
