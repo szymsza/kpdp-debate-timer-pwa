@@ -44,7 +44,7 @@ const PWAPromptIOS: FunctionalComponent = () => {
       setVisible={() => {
         setPromptVisible(false);
         if (typeof window !== 'undefined') {
-          localStorage.setItem(promptVisibleLocalStorageKey, 'true');
+          localStorage.setItem(promptVisibleLocalStorageKey, 'false');
         }
       }}
     >
