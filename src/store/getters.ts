@@ -30,6 +30,36 @@ export const getActiveTimeSlot = (store: StoreContent): TimeSlot | undefined => 
   return undefined;
 };
 
+// Convert classic speakers data to order for linear mode overview
+export const getLinearSpeakersData = (store: StoreContent): SpeakerTimeSlot[][][] => {
+  const affirmative: SpeakerTimeSlot[] = store.speakers[0];
+  const negative: SpeakerTimeSlot[] = store.speakers[1];
+
+  const generateTimeSlots = (
+    speakersParty: SpeakerTimeSlot[], questionerParty: SpeakerTimeSlot[],
+  ): SpeakerTimeSlot[][] => [
+    // X1, Y3 -> X1
+    [
+      speakersParty[0],
+      questionerParty[3],
+    ],
+    // X2, Y1 -> X2
+    [
+      speakersParty[1],
+      questionerParty[4],
+    ],
+    // X3
+    [
+      speakersParty[2],
+    ],
+  ];
+
+  return [
+    generateTimeSlots(affirmative, negative),
+    generateTimeSlots(negative, affirmative),
+  ];
+};
+
 export const timerOrPrepTimeRunning = (store: StoreContent): boolean => (
   !!getActivePrepTime(store) || !getSelectedSpeaker(store).paused
 );
