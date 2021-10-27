@@ -10,7 +10,7 @@ const Speakers: FunctionalComponent = () => {
   const speakersData: SpeakerTimeSlot[][][] = getLinearSpeakersData(store);
 
   return (
-    <section className="speakers">
+    <section className="speakers speakers--linear">
       {
         speakersData.map((party) => (
           <section className={`speakers__column speakers__column--linear speakers__column--${party[0][0].party}`}>

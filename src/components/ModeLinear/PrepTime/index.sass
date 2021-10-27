@@ -1,0 +1,43 @@
+@import "../../../style/variables"
+
+.preptime--linear
+    flex: 0 0 var(--preptime-height)
+    --preptime-height: 3rem
+
+.preptime__button--linear
+    display: flex
+    align-items: center
+    justify-content: center
+    width: calc((100% - var(--padding-x) * 2) / 2)
+    font-size: 1.2rem
+    font-weight: 300
+    border: 1px solid var(--border-colour)
+    border-radius: .5rem
+    --center-offset: .5rem
+
+    &.preptime__button--affirmative
+        margin-right: calc(-1 * var(--center-offset))
+        padding-right: var(--center-offset)
+        border-bottom-right-radius: 0
+        border-top-right-radius: 0
+        --border-colour: var(--party-affirmative)
+
+    &.preptime__button--negative
+        margin-left: calc(-1 * var(--center-offset))
+        padding-left: var(--center-offset)
+        border-bottom-left-radius: 0
+        border-top-left-radius: 0
+        --border-colour: var(--party-negative)
+
+.preptime__toggle-paused-button
+    position: absolute
+    top: 0
+    height: var(--preptime-height)
+    width: var(--preptime-height)
+    border-radius: 100%
+
+    &.preptime__toggle-paused-button--affirmative
+        --bg-accent: var(--party-affirmative-font)
+
+    &.preptime__toggle-paused-button--negative
+        --bg-accent: var(--party-negative-font)
