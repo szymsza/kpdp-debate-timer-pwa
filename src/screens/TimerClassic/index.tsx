@@ -1,8 +1,8 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 
-import Header from '../../components/Header';
-import PrepTime from '../../components/PrepTime';
-import Speakers from '../../components/Speakers';
+import Header from '../../components/ModeClassic/Header';
+import PrepTime from '../../components/ModeClassic/PrepTime';
+import Speakers from '../../components/ModeClassic/Speakers';
 
 const TimerClassic: FunctionalComponent = () => (
   <Fragment>

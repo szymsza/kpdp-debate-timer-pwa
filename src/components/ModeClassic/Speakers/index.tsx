@@ -1,9 +1,9 @@
 import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
-import { Context } from '../../store';
-import { Dispatch } from '../../store/types';
-import { timerOrPrepTimeRunning } from '../../store/getters';
-import Button from '../Button';
+import { Context } from '../../../store';
+import { Dispatch } from '../../../store/types';
+import { timerOrPrepTimeRunning } from '../../../store/getters';
+import Button from '../../Button';
 
 const setSelectedSpeaker = (dispatch: Dispatch, label: string) => {
   dispatch({

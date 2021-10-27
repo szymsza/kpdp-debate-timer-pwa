@@ -1,11 +1,11 @@
 import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
-import { Dispatch } from '../../store/types';
-import { Context } from '../../store';
-import Button from '../Button';
-import Time from '../Time';
-import { getActivePrepTime, getSelectedSpeaker } from '../../store/getters';
-import localisation from '../../localisation';
+import { Dispatch } from '../../../store/types';
+import { Context } from '../../../store';
+import Button from '../../Button';
+import Time from '../../Time';
+import { getActivePrepTime, getSelectedSpeaker } from '../../../store/getters';
+import localisation from '../../../localisation';
 
 const togglePausedTimer = (dispatch: Dispatch) => {
   dispatch({
