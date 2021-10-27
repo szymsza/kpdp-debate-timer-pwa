@@ -4,6 +4,7 @@ import { h, FunctionalComponent } from 'preact';
 // Source: https://www.svgrepo.com/svg/47493/circular-refreshment-arrow
 const Icon: FunctionalComponent = () => (
   <svg
+    className="icon icon--reset"
     version="1.1"
     id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"

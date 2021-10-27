@@ -4,6 +4,7 @@ import { h, FunctionalComponent } from 'preact';
 // Source: https://www.svgrepo.com/svg/111215/back
 const Icon: FunctionalComponent = () => (
   <svg
+    className="icon icon--back"
     version="1.1"
     id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"

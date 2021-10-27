@@ -5,6 +5,8 @@ import { Dispatch } from '../../../store/types';
 import { getActivePrepTime, getSelectedSpeaker } from '../../../store/getters';
 import Button from '../../Button';
 import Time from '../../Time';
+import Pause from '../../Icons/Pause';
+import Play from '../../Icons/Play';
 
 const togglePausedTimer = (dispatch: Dispatch) => {
   dispatch({
@@ -29,7 +31,7 @@ const PrepTime: FunctionalComponent = () => {
       }
       <Button
         className={`preptime__toggle-paused-button preptime__toggle-paused-button--${activeSpeaker.party}`}
-        title={activeSpeaker.paused ? '>' : '||'}
+        icon={activeSpeaker.paused ? Play : Pause}
         active
         disabled={!!activePrepTime}
         onClick={() => togglePausedTimer(dispatch)}

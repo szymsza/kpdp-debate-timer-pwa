@@ -5,7 +5,8 @@ import { Party, TimeSlot } from '../../types';
 export type ButtonOnClickEvent = h.JSX.TargetedEvent<HTMLElement, MouseEvent>;
 
 interface ButtonProps {
-  title: string
+  title?: string
+  icon?: FunctionalComponent
   className?: string
   time?: TimeSlot
   active?: boolean
@@ -18,6 +19,7 @@ interface ButtonProps {
 
 const Button: FunctionalComponent<ButtonProps> = ({
   title,
+  icon: Icon,
   className,
   time,
   active,
@@ -33,7 +35,8 @@ const Button: FunctionalComponent<ButtonProps> = ({
     className={`button ${className ?? ''} ${active ? 'button--active' : ''} ${inverse ? 'button--inverse' : ''} ${disabled ? 'button--disabled' : ''} ${party ? `button--${party}` : ''}`}
     disabled={disabled}
   >
-    <span className="button__title">{title}</span>
+    {Icon && <Icon />}
+    {title && <span className="button__title">{title}</span>}
     {time && (
       <span className="button__subtitle">
         <Time time={time} display={display} />
