@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../../store';
 import { Dispatch } from '../../../store/types';
-import { getActivePrepTime, getSelectedSpeaker } from '../../../store/getters';
+import { getSelectedTimeSlot } from '../../../store/getters';
 import Button from '../../Button';
 import Time from '../../Time';
 import Pause from '../../Icons/Pause';
@@ -17,8 +17,7 @@ const togglePausedTimer = (dispatch: Dispatch) => {
 
 const PrepTime: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
-  const activeSpeaker = getSelectedSpeaker(store);
-  const activePrepTime = getActivePrepTime(store);
+  const activeTimeSlot = getSelectedTimeSlot(store);
 
   return (
     <section className="preptime preptime--linear">
@@ -30,10 +29,9 @@ const PrepTime: FunctionalComponent = () => {
         ))
       }
       <Button
-        className={`preptime__toggle-paused-button preptime__toggle-paused-button--${activeSpeaker.party}`}
-        icon={activeSpeaker.paused ? Play : Pause}
+        className={`preptime__toggle-paused-button preptime__toggle-paused-button--${activeTimeSlot?.party}`}
+        icon={activeTimeSlot?.paused ? Play : Pause}
         active
-        disabled={!!activePrepTime}
         onClick={() => togglePausedTimer(dispatch)}
       />
     </section>

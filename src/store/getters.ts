@@ -2,33 +2,44 @@ import { StoreContent } from './types';
 import { TimeSlot } from '../types';
 import { Mode } from '../modes';
 
-export const getSelectedSpeaker = (store: StoreContent): TimeSlot => (
-  store.speakers.flat().find((speaker) => speaker.selected)!
-);
-
 // Get active mode from store
 export const getActiveStoreMode = (store: StoreContent): Mode => <Mode>(
   store.modes.find((item) => item.active)!.value
 );
 
-export const getActivePrepTime = (store: StoreContent): TimeSlot | undefined => (
-  store.prepTimes.find((time) => time.selected && !time.paused)
+// Filter selected time slots
+const filterSelectedTimeSlot = (slots: TimeSlot[]): TimeSlot | undefined => (
+  slots.find((slot) => slot.selected)
 );
 
-export const getActiveTimeSlot = (store: StoreContent): TimeSlot | undefined => {
-  const prepTime: TimeSlot | undefined = getActivePrepTime(store);
+export const getSelectedSpeaker = (
+  store: StoreContent,
+): TimeSlot | undefined => filterSelectedTimeSlot(store.speakers.flat());
 
-  if (prepTime) {
-    return prepTime;
-  }
+export const getSelectedPrepTime = (
+  store: StoreContent,
+): TimeSlot | undefined => filterSelectedTimeSlot(store.prepTimes);
 
-  const speaker: TimeSlot = getSelectedSpeaker(store);
+export const getSelectedTimeSlot = (
+  store: StoreContent,
+): TimeSlot | undefined => getSelectedPrepTime(store) ?? getSelectedSpeaker(store);
 
-  if (!speaker.paused) {
-    return speaker;
-  }
-  return undefined;
-};
+// Filter running time slots
+const filterRunningTimeSlot = (slots: TimeSlot[]): TimeSlot | undefined => [
+  filterSelectedTimeSlot(slots),
+].find((slot) => slot && !slot.paused);
+
+export const getRunningSpeaker = (
+  store: StoreContent,
+): TimeSlot | undefined => filterRunningTimeSlot(store.speakers.flat());
+
+export const getRunningPrepTime = (
+  store: StoreContent,
+): TimeSlot | undefined => filterRunningTimeSlot(store.prepTimes);
+
+export const getRunningTimeSlot = (
+  store: StoreContent,
+): TimeSlot | undefined => getRunningPrepTime(store) ?? getRunningSpeaker(store);
 
 // Convert classic speakers data to order for linear mode overview
 export const getLinearSpeakersData = (store: StoreContent): TimeSlot[][][] => {
@@ -95,6 +106,12 @@ export const getLinearTimeSlots = (store: StoreContent): TimeSlot[] => {
   return result;
 };
 
+/*
+TODO - think about how to solve situation with single prep time on multiple positions
+  - probably just global integer store for active linear time slot & increment it
+*/
+export const getSelectedTimeSlotLinearIndex = (store: StoreContent): number => 0;
+
 export const timerOrPrepTimeRunning = (store: StoreContent): boolean => (
-  !!getActivePrepTime(store) || !getSelectedSpeaker(store).paused
+  !!getRunningPrepTime(store) || !!getRunningSpeaker(store)
 );

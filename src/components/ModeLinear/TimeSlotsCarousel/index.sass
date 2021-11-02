@@ -1,17 +1,35 @@
 @import "../../../style/variables"
 
+$carouselCardCount: 18
+
 .time-slots-carousel
+    display: flex
+    gap: var(--carousel-flex-gap)
+    overflow: hidden
     padding: var(--padding-x) var(--padding-x) Min(calc(2 * var(--padding-x)), 4rem)
 
+    --carousel-flex-gap: 1rem
+
+    @for $i from 1 through $carouselCardCount
+        &.time-slots-carousel--card-#{$i}-visible
+            .time-slots-carousel__card:first-child
+                margin-left: calc(-#{$i} * (100vw - var(--carousel-flex-gap) - var(--padding-x) * 2))
+
+    &.time-slots-carousel--card-#{$carouselCardCount}-visible
+        .time-slots-carousel__card:first-child
+            margin-right: calc(var(--carousel-flex-gap) + var(--padding-x))
+
 .time-slots-carousel__card
-    display: flex
-    height: 100%
-    width: calc(100% - 2rem)
-    align-items: center
-    justify-content: center
     position: relative
-    background-color: var(--party-colour)
+    align-items: center
+    display: flex
+    flex-basis: calc(100vw - var(--padding-x) * 2 - var(--carousel-flex-gap) * 2)
+    flex-grow: 0
+    flex-shrink: 0
+    height: 100%
+    justify-content: center
     color: var(--font-accent)
+    background-color: var(--party-colour)
     border: 1px solid var(--party-colour)
     border-radius: .5rem
 

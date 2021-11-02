@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../../store';
 import { Dispatch } from '../../../store/types';
-import { getActivePrepTime, getSelectedSpeaker } from '../../../store/getters';
+import { getSelectedPrepTime, getSelectedSpeaker } from '../../../store/getters';
 import Button from '../../Button';
 import localisation from '../../../localisation';
 
@@ -15,8 +15,8 @@ const toggleActivePrepTime = (dispatch: Dispatch, label: string) => {
 
 const PrepTime: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
-  const activeSpeaker = getSelectedSpeaker(store);
-  const activePrepTime = getActivePrepTime(store);
+  const selectedSpeaker = getSelectedSpeaker(store);
+  const selectedPrepTime = getSelectedPrepTime(store);
 
   return (
     <section className="preptime">
@@ -29,7 +29,7 @@ const PrepTime: FunctionalComponent = () => {
             time={time}
             active={time.selected && !time.paused}
             inverse
-            disabled={(activePrepTime && activePrepTime !== time) || !activeSpeaker.paused}
+            disabled={(selectedPrepTime && selectedPrepTime !== time) || !selectedSpeaker?.paused}
             party={time.party}
             display="remaining"
             onClick={() => toggleActivePrepTime(dispatch, time.label)}

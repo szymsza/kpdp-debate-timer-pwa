@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'preact/hooks';
 import TimerClassic from '../TimerClassic';
 import Toolbar from '../../components/Toolbar';
 import Dialog from '../../components/Dialog';
-import { getActiveStoreMode, getActiveTimeSlot } from '../../store/getters';
+import { getActiveStoreMode, getRunningTimeSlot } from '../../store/getters';
 import { Context } from '../../store';
 import { TimeSlot } from '../../types';
 import { Dispatch } from '../../store/types';
@@ -38,7 +38,7 @@ const tickTimer = (activeTimeSlot: TimeSlot | undefined, dispatch: Dispatch) => 
 
 const Timer: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
-  const activeTimeSlot: TimeSlot | undefined = getActiveTimeSlot(store);
+  const activeTimeSlot: TimeSlot | undefined = getRunningTimeSlot(store);
   const activeMode: Mode = getActiveStoreMode(store);
 
   useEffect(() => tickTimer(activeTimeSlot, dispatch), [activeTimeSlot]);

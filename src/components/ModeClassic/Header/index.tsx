@@ -4,7 +4,7 @@ import { Dispatch } from '../../../store/types';
 import { Context } from '../../../store';
 import Button from '../../Button';
 import Time from '../../Time';
-import { getActivePrepTime, getSelectedSpeaker } from '../../../store/getters';
+import { getSelectedPrepTime, getSelectedSpeaker } from '../../../store/getters';
 import localisation from '../../../localisation';
 
 const togglePausedTimer = (dispatch: Dispatch) => {
@@ -17,20 +17,20 @@ const togglePausedTimer = (dispatch: Dispatch) => {
 const Header: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
   const activeSpeaker = getSelectedSpeaker(store);
-  const activePrepTime = getActivePrepTime(store);
+  const activePrepTime = getSelectedPrepTime(store);
 
   return (
     <header className="header">
       <Time
-        time={activeSpeaker}
+        time={activeSpeaker ?? store.speakers[0][0]}
         display="remaining"
         className={`main-time header__time ${activePrepTime ? 'header__time--disabled' : ''}`}
       />
       <div className="header__button-wrapper">
         <Button
-          title={activeSpeaker.paused ? localisation.start : localisation.pause}
+          title={activeSpeaker?.paused ? localisation.start : localisation.pause}
           className="header__button"
-          active={!activeSpeaker.paused}
+          active={!activeSpeaker?.paused}
           disabled={!!activePrepTime}
           onClick={() => togglePausedTimer(dispatch)}
         />
