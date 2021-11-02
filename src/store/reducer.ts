@@ -63,10 +63,11 @@ const setSelectedSpeaker = (store: StoreContent, label: string): StoreContent =>
 const toggleActivePrepTime = (store: StoreContent, label: string): StoreContent => ({
   ...store,
   prepTimes: store.prepTimes.map((time) => {
-    const shouldBeActive = time.label === label && !time.active;
+    const shouldBeActive = time.label === label && (!time.selected || time.paused);
     return {
       ...time,
-      active: shouldBeActive,
+      selected: shouldBeActive,
+      paused: !shouldBeActive,
       timeStartedDate: shouldBeActive ? Date.now() : null,
     };
   }),

@@ -24,7 +24,8 @@ export default {
   prepTimes: prepTimes.map((item, itemIndex) => ({
     ...item,
     party: itemIndex === 0 ? 'affirmative' : 'negative',
-    active: false,
+    selected: false,
+    paused: true,
     total: item.time * 60,
     elapsed: 0,
     timeStartedDate: null,

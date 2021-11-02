@@ -14,15 +14,8 @@ export interface TimeSlot {
   party: Party
   total: number
   elapsed: number
-  // set to Date.now() after timer is started to accurately compute elapsed time
-  timeStartedDate: number | null
-}
-
-export interface SpeakerTimeSlot extends TimeSlot {
   selected: boolean
   paused: boolean
-}
-
-export interface PrepTimeSlot extends TimeSlot {
-  active: boolean
+  // set to Date.now() after timer is started to accurately compute elapsed time
+  timeStartedDate: number | null
 }

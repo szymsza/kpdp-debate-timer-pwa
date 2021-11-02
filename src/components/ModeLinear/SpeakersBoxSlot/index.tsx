@@ -1,10 +1,10 @@
 import { FunctionalComponent, h } from 'preact';
 
-import { SpeakerTimeSlot } from '../../../types';
+import { TimeSlot } from '../../../types';
 import Time from '../../Time';
 
 interface SpeakerBoxSlotProps {
-  timeSlots: SpeakerTimeSlot[]
+  timeSlots: TimeSlot[]
 }
 
 const SpeakersBoxSlot: FunctionalComponent<SpeakerBoxSlotProps> = ({

@@ -27,7 +27,7 @@ const PrepTime: FunctionalComponent = () => {
             title={time.label}
             className="preptime__button"
             time={time}
-            active={time.active}
+            active={time.selected && !time.paused}
             inverse
             disabled={(activePrepTime && activePrepTime !== time) || !activeSpeaker.paused}
             party={time.party}

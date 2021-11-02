@@ -1,5 +1,5 @@
 import {
-  PrepTimeSlot, Screen, SpeakerTimeSlot,
+  Screen, TimeSlot,
 } from '../types';
 import { RadioOption } from '../components/Radio';
 
@@ -7,8 +7,8 @@ export interface StoreContent {
   screen: Screen
   themes: RadioOption[]
   modes: RadioOption[]
-  speakers: SpeakerTimeSlot[][]
-  prepTimes: PrepTimeSlot[]
+  speakers: TimeSlot[][]
+  prepTimes: TimeSlot[]
   resetDialogVisible: boolean
 }
 
