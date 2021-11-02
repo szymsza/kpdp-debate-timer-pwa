@@ -60,6 +60,41 @@ export const getLinearSpeakersData = (store: StoreContent): TimeSlot[][][] => {
   ];
 };
 
+// Insert given prep time after each given speaker
+const zipSpeakersWithPrepTime = (speakers: TimeSlot[], prepTime: TimeSlot): TimeSlot[] => {
+  return speakers.map((speaker) => ([
+    speaker,
+    prepTime,
+  ])).flat();
+};
+
+// Get all time slots for linear mode carousel, including prep times
+export const getLinearTimeSlots = (store: StoreContent): TimeSlot[] => {
+  const speakers: TimeSlot[][][] = getLinearSpeakersData(store);
+  const speakersAffirmative: TimeSlot[][] = speakers[0];
+  const speakersNegative: TimeSlot[][] = speakers[1];
+
+  const prepTimeAffirmative: TimeSlot = store.prepTimes[0];
+  const prepTimeNegative: TimeSlot = store.prepTimes[1];
+
+  const slotGroups: TimeSlot[][] = [];
+
+  // Zip each speaker group with opposite party prep time
+  for (let i = 0; i < speakersAffirmative.length; i += 1) {
+    slotGroups.push(
+      zipSpeakersWithPrepTime(speakersAffirmative[i], prepTimeNegative),
+      zipSpeakersWithPrepTime(speakersNegative[i], prepTimeAffirmative),
+    );
+  }
+
+  const result = slotGroups.flat();
+
+  // Remove last useless affirmative prep time
+  result.pop();
+
+  return result;
+};
+
 export const timerOrPrepTimeRunning = (store: StoreContent): boolean => (
   !!getActivePrepTime(store) || !getSelectedSpeaker(store).paused
 );
