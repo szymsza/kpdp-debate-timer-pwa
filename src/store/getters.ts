@@ -72,12 +72,11 @@ export const getLinearSpeakersData = (store: StoreContent): TimeSlot[][][] => {
 };
 
 // Insert given prep time after each given speaker
-const zipSpeakersWithPrepTime = (speakers: TimeSlot[], prepTime: TimeSlot): TimeSlot[] => {
-  return speakers.map((speaker) => ([
+const zipSpeakersWithPrepTime = (speakers: TimeSlot[], prepTime: TimeSlot): TimeSlot[] => speakers
+  .map((speaker) => ([
     speaker,
     prepTime,
   ])).flat();
-};
 
 // Get all time slots for linear mode carousel, including prep times
 export const getLinearTimeSlots = (store: StoreContent): TimeSlot[] => {
@@ -110,7 +109,7 @@ export const getLinearTimeSlots = (store: StoreContent): TimeSlot[] => {
 TODO - think about how to solve situation with single prep time on multiple positions
   - probably just global integer store for active linear time slot & increment it
 */
-export const getSelectedTimeSlotLinearIndex = (store: StoreContent): number => 0;
+export const getSelectedTimeSlotLinearIndex = (/* store: StoreContent */): number => 0;
 
 export const timerOrPrepTimeRunning = (store: StoreContent): boolean => (
   !!getRunningPrepTime(store) || !!getRunningSpeaker(store)
