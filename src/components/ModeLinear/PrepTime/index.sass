@@ -63,3 +63,18 @@
     .preptime__toggle-paused-button
         left: 50%
         transform: translateX(-50%)
+
+@media #{$iPhoneLandscape}
+    .preptime--linear
+        align-self: stretch
+        justify-content: center
+        padding-top: var(--screen-linear-timer-padding)
+        --preptime-height: calc(var(--grid-preptime-height) - var(--screen-linear-timer-padding))
+
+    .preptime__button--linear
+        margin: 0
+        width: calc(50% - var(--screen-linear-timer-padding))
+
+    .preptime__toggle-paused-button
+        bottom: 0
+        top: unset

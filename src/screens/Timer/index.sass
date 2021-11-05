@@ -34,6 +34,7 @@
         width: calc((100% - var(--padding-x)) / 2)
 
 @media #{$iPhoneLandscape}
+    // Classic
     .screen--timer
         flex-direction: row
 
@@ -54,3 +55,30 @@
 
     .preptime__button
         width: 100%
+
+    // Linear
+    .screen--timer-linear
+        display: grid
+        --screen-linear-timer-padding: 1rem
+        --grid-speakers-width: calc(15% + 5rem)
+        --grid-toolbar-width: 3.75rem
+        --grid-preptime-height: 4rem
+        grid-template-columns: var(--grid-speakers-width) calc(100% - var(--grid-speakers-width) - var(--grid-toolbar-width)) var(--grid-toolbar-width)
+        grid-template-rows: var(--grid-preptime-height) auto
+        grid-template-areas: "speakers preptime toolbar" "speakers carousel toolbar"
+
+        .main-time
+            font-size: 10vw
+
+        .toolbar
+            grid-area: toolbar
+            margin-left: 0
+
+    .speakers--linear
+        grid-area: speakers
+
+    .preptime--linear
+        grid-area: preptime
+
+    .time-slots-carousel
+        grid-area: carousel

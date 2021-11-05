@@ -127,6 +127,7 @@ const reset = (store: StoreContent): StoreContent => ({
   ...store,
   speakers: initialStore.speakers,
   prepTimes: initialStore.prepTimes,
+  linearActiveSlotIndex: initialStore.linearActiveSlotIndex,
 });
 
 const toggleResetDialog = (store: StoreContent, visible: boolean): StoreContent => ({

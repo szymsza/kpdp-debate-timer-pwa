@@ -44,7 +44,7 @@ const Timer: FunctionalComponent = () => {
   useEffect(() => tickTimer(activeTimeSlot, dispatch), [activeTimeSlot]);
 
   return (
-    <main className="screen screen--timer">
+    <main className={`screen screen--timer screen--timer-${activeMode}`}>
       {
         activeMode === 'classic'
           ? <TimerClassic />

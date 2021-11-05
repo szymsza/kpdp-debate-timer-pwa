@@ -10,6 +10,8 @@ $carouselCardCount: 18
     --carousel-flex-gap: 1rem
     --carousel-card-overflow: 1rem
     --carousel-transition-duration: .5s
+    --carousel-full-width: Min(100vw, #{$maxContainerWidth})
+    --carousel-card-full-width: calc(var(--carousel-full-width) - var(--carousel-flex-gap) - var(--carousel-card-overflow) * 2)
 
     .time-slots-carousel__card:first-child
         transition-duration: var(--carousel-transition-duration)
@@ -19,7 +21,7 @@ $carouselCardCount: 18
 @for $i from 1 through $carouselCardCount
     .time-slots-carousel--card-#{$i}-visible
         .time-slots-carousel__card:first-child
-            margin-left: calc(-#{$i} * (Min(100vw, #{$maxContainerWidth}) - var(--carousel-flex-gap) - var(--carousel-card-overflow) * 2))
+            margin-left: calc(-#{$i} * var(--carousel-card-full-width))
 
 .time-slots-carousel--card-#{$carouselCardCount}-visible
     .time-slots-carousel__card:first-child
@@ -29,7 +31,7 @@ $carouselCardCount: 18
     position: relative
     align-items: center
     display: flex
-    flex-basis: calc(Min(100vw, #{$maxContainerWidth}) - var(--carousel-card-overflow) * 2 - var(--carousel-flex-gap) * 2)
+    flex-basis: calc(var(--carousel-card-full-width) - var(--carousel-flex-gap))
     flex-grow: 0
     flex-shrink: 0
     height: 100%
@@ -67,6 +69,7 @@ $carouselCardCount: 18
     .time-slots-carousel
         padding-left: 0
         padding-right: 0
+        --carousel-card-overflow: calc(-1 * var(--carousel-flex-gap))
 
     .time-slots-carousel__card--disabled
         opacity: .5
@@ -74,3 +77,19 @@ $carouselCardCount: 18
 @media #{$iPadPro}
     .time-slots-carousel__card-label
         font-size: 1.2rem
+
+@media #{$iPhoneLandscape}
+    .time-slots-carousel
+        align-self: stretch
+        overflow: hidden
+        padding-bottom: var(--screen-linear-timer-padding)
+        width: 100%
+        --carousel-full-width: 100%
+        --carousel-card-overflow: .5rem
+
+    .time-slots-carousel--card-#{$carouselCardCount}-visible
+        .time-slots-carousel__card:first-child
+            margin-right: calc(var(--carousel-flex-gap) + 4 * var(--carousel-card-overflow))
+
+    .time-slots-carousel__card-label
+        font-size: 1.1rem
