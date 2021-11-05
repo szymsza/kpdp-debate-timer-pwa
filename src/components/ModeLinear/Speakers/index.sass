@@ -1,7 +1,7 @@
 @import "../../../style/variables"
 
 .speakers--linear
-    padding-bottom: var(--padding-x)
+    padding-bottom: Min(var(--padding-x), 2rem)
     padding-top: Min(calc(2 * var(--padding-x)), 4rem)
 
 .speakers__column--linear
@@ -10,10 +10,10 @@
     border: 1px solid var(--column-border-colour)
     border-radius: .5rem
 
-    &.speakers__column--affirmative
-        --column-border-colour: var(--party-affirmative)
-        --column-font-colour: var(--party-affirmative-font)
+.speakers__column--affirmative
+    --column-border-colour: var(--party-affirmative)
+    --column-font-colour: var(--party-affirmative-font)
 
-    &.speakers__column--negative
-        --column-border-colour: var(--party-negative)
-        --column-font-colour: var(--party-negative-font)
+.speakers__column--negative
+    --column-border-colour: var(--party-negative)
+    --column-font-colour: var(--party-negative-font)

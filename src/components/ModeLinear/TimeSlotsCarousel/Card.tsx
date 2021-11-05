@@ -18,7 +18,7 @@ const Card: FunctionalComponent<CardProps> = ({
   <button
     type="button"
     disabled={!active}
-    className={`time-slots-carousel__card time-slots-carousel__card--${timeSlot.party}`}
+    className={`time-slots-carousel__card time-slots-carousel__card--${timeSlot.party} ${!active ? 'time-slots-carousel__card--disabled' : ''}`}
     onClick={(e) => (onClick ? onClick(e) : null)}
   >
     <span className="time-slots-carousel__card-label">

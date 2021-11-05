@@ -15,19 +15,19 @@
     border-radius: .5rem
     --center-offset: .5rem
 
-    &.preptime__button--affirmative
-        margin-right: calc(-1 * var(--center-offset))
-        padding-right: var(--center-offset)
-        border-bottom-right-radius: 0
-        border-top-right-radius: 0
-        --border-colour: var(--party-affirmative)
+.preptime__button--affirmative
+    margin-right: calc(-1 * var(--center-offset))
+    padding-right: var(--center-offset)
+    border-bottom-right-radius: 0
+    border-top-right-radius: 0
+    --border-colour: var(--party-affirmative)
 
-    &.preptime__button--negative
-        margin-left: calc(-1 * var(--center-offset))
-        padding-left: var(--center-offset)
-        border-bottom-left-radius: 0
-        border-top-left-radius: 0
-        --border-colour: var(--party-negative)
+.preptime__button--negative
+    margin-left: calc(-1 * var(--center-offset))
+    padding-left: var(--center-offset)
+    border-bottom-left-radius: 0
+    border-top-left-radius: 0
+    --border-colour: var(--party-negative)
 
 .preptime__toggle-paused-button
     position: absolute
@@ -35,12 +35,6 @@
     height: var(--preptime-height)
     width: var(--preptime-height)
     border-radius: 100%
-
-    &.preptime__toggle-paused-button--affirmative
-        --bg-accent: var(--party-affirmative-font)
-
-    &.preptime__toggle-paused-button--negative
-        --bg-accent: var(--party-negative-font)
 
     .icon
         width: 45%
@@ -51,3 +45,21 @@
 
     .icon--play
         margin-right: -5px
+
+.preptime__toggle-paused-button--affirmative
+    --bg-accent: var(--party-affirmative-font)
+
+.preptime__toggle-paused-button--negative
+    --bg-accent: var(--party-negative-font)
+
+@media #{$iPad}
+    .preptime--linear
+        --preptime-height: 4rem
+
+    .preptime__button--linear
+        width: 50%
+        font-size: 1.5rem
+
+    .preptime__toggle-paused-button
+        left: 50%
+        transform: translateX(-50%)

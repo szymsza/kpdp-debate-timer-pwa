@@ -5,25 +5,31 @@ $carouselCardCount: 18
 .time-slots-carousel
     display: flex
     gap: var(--carousel-flex-gap)
-    overflow: hidden
-    padding: var(--padding-x) var(--padding-x) Min(calc(2 * var(--padding-x)), 4rem)
+    padding: Min(var(--padding-x), 2rem) var(--padding-x) Min(calc(2 * var(--padding-x)), 4rem)
 
     --carousel-flex-gap: 1rem
+    --carousel-card-overflow: 1rem
+    --carousel-transition-duration: .5s
 
-    @for $i from 1 through $carouselCardCount
-        &.time-slots-carousel--card-#{$i}-visible
-            .time-slots-carousel__card:first-child
-                margin-left: calc(-#{$i} * (100vw - var(--carousel-flex-gap) - var(--padding-x) * 2))
+    .time-slots-carousel__card:first-child
+        transition-duration: var(--carousel-transition-duration)
+        transition-timing-function: ease-in-out
+        transition-property: all
 
-    &.time-slots-carousel--card-#{$carouselCardCount}-visible
+@for $i from 1 through $carouselCardCount
+    .time-slots-carousel--card-#{$i}-visible
         .time-slots-carousel__card:first-child
-            margin-right: calc(var(--carousel-flex-gap) + var(--padding-x))
+            margin-left: calc(-#{$i} * (Min(100vw, #{$maxContainerWidth}) - var(--carousel-flex-gap) - var(--carousel-card-overflow) * 2))
+
+.time-slots-carousel--card-#{$carouselCardCount}-visible
+    .time-slots-carousel__card:first-child
+        margin-right: calc(var(--carousel-flex-gap) + var(--carousel-card-overflow))
 
 .time-slots-carousel__card
     position: relative
     align-items: center
     display: flex
-    flex-basis: calc(100vw - var(--padding-x) * 2 - var(--carousel-flex-gap) * 2)
+    flex-basis: calc(Min(100vw, #{$maxContainerWidth}) - var(--carousel-card-overflow) * 2 - var(--carousel-flex-gap) * 2)
     flex-grow: 0
     flex-shrink: 0
     height: 100%
@@ -32,19 +38,39 @@ $carouselCardCount: 18
     background-color: var(--party-colour)
     border: 1px solid var(--party-colour)
     border-radius: .5rem
+    transition-duration: var(--carousel-transition-duration)
+    transition-property: opacity
+    cursor: pointer
 
-    &.time-slots-carousel__card--affirmative
-        --party-colour: var(--party-affirmative)
+.time-slots-carousel__card--disabled
+    opacity: .75
+    cursor: not-allowed
 
-    &.time-slots-carousel__card--negative
-        --party-colour: var(--party-negative)
+.time-slots-carousel__card--affirmative
+    --party-colour: var(--party-affirmative)
+
+.time-slots-carousel__card--negative
+    --party-colour: var(--party-negative)
 
 .time-slots-carousel__card-label
+    left: .75rem
     position: absolute
-    left: 1rem
-    top: 1rem
+    top: .75rem
+
+@media #{$iPhone6}
+    .time-slots-carousel__card-label
+        left: 1rem
+        top: 1rem
+        font-size: 1rem
 
 @media #{$iPad}
     .time-slots-carousel
         padding-left: 0
         padding-right: 0
+
+    .time-slots-carousel__card--disabled
+        opacity: .5
+
+@media #{$iPadPro}
+    .time-slots-carousel__card-label
+        font-size: 1.2rem
