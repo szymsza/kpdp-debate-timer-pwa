@@ -16,7 +16,7 @@ $carouselCardCount: 18
     .time-slots-carousel__card:first-child
         transition-duration: var(--carousel-transition-duration)
         transition-timing-function: ease-in-out
-        transition-property: all
+        transition-property: margin, opacity
 
 @for $i from 1 through $carouselCardCount
     .time-slots-carousel--card-#{$i}-visible
