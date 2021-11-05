@@ -30,14 +30,13 @@
     width: Min(55%, 220px)
     font-size: 1.2rem
 
+.feature-discovery-visible
+    .time-slots-carousel__card:first-child, .toolbar__button:last-child
+        z-index: 5
+        box-shadow: var(--feature-discovery-glow-shadow)
 
-// Only if wrapped in feature-discovery-enabled wrapper
-.time-slots-carousel__card:first-child, .toolbar__button:last-child
-    z-index: 5
-    box-shadow: var(--feature-discovery-glow-shadow)
-
-.toolbar__button:last-child
-    background: inherit
+    .toolbar__button:last-child
+        background: inherit
 
 @media #{$iPhone6Plus}
     .feature-discovery__heading--timer
