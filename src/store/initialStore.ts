@@ -31,4 +31,5 @@ export default {
     timeStartedDate: null,
   })),
   resetDialogVisible: false,
+  linearActiveSlotIndex: 0,
 } as StoreContent;

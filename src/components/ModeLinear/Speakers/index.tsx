@@ -1,9 +1,9 @@
 import { FunctionalComponent, h } from 'preact';
 import { useContext } from 'preact/hooks';
 import { Context } from '../../../store';
-import { getLinearSpeakersData } from '../../../store/getters';
 import { TimeSlot } from '../../../types';
 import SpeakersBoxSlot from '../SpeakersBoxSlot';
+import { getLinearSpeakersData } from '../getters';
 
 const Speakers: FunctionalComponent = () => {
   const { store } = useContext(Context);

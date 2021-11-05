@@ -3,6 +3,7 @@ import { Screen, screens, TimeSlot } from '../types';
 import initialStore from './initialStore';
 import { activateThemeColour } from '../themes';
 import { setActiveOption } from '../localStorage';
+import { getLinearTimeSlots } from '../components/ModeLinear/getters';
 
 const setScreen = (
   store: StoreContent,
@@ -50,6 +51,35 @@ const setMode = (store: StoreContent, value: string): StoreContent => {
   };
 };
 
+const toggleActiveTimeSlot = (
+  slot: TimeSlot,
+  active: boolean = slot.selected && slot.paused,
+  toggleSelected: boolean = false,
+) => ({
+  ...slot,
+  selected: toggleSelected ? active : slot.selected,
+  paused: !active,
+  timeStartedDate: active ? Date.now() : null,
+});
+
+const incrementLinearActiveSlotIndex = (store: StoreContent): StoreContent => {
+  const linearSlots: TimeSlot[] = getLinearTimeSlots(store);
+  const nextSlot: TimeSlot | null = linearSlots[store.linearActiveSlotIndex + 1] ?? null;
+
+  const slotShouldBeActive = (slot: TimeSlot) => nextSlot && slot.label === nextSlot.label;
+
+  return {
+    ...store,
+    speakers: store.speakers.map((party) => party.map(
+      (slot) => toggleActiveTimeSlot(slot, slotShouldBeActive(slot), !!nextSlot),
+    )),
+    prepTimes: store.prepTimes.map((slot) => toggleActiveTimeSlot(
+      slot, slotShouldBeActive(slot), !!nextSlot,
+    )),
+    linearActiveSlotIndex: store.linearActiveSlotIndex + (nextSlot ? 1 : 0),
+  };
+};
+
 const setSelectedSpeaker = (store: StoreContent, label: string): StoreContent => ({
   ...store,
   speakers: store.speakers.map((party) => party.map(
@@ -62,15 +92,13 @@ const setSelectedSpeaker = (store: StoreContent, label: string): StoreContent =>
 
 const toggleActivePrepTime = (store: StoreContent, label: string): StoreContent => ({
   ...store,
-  prepTimes: store.prepTimes.map((time) => {
-    const shouldBeActive = time.label === label && (!time.selected || time.paused);
-    return {
-      ...time,
-      selected: shouldBeActive,
-      paused: !shouldBeActive,
-      timeStartedDate: shouldBeActive ? Date.now() : null,
-    };
-  }),
+  prepTimes: store.prepTimes.map(
+    (time) => toggleActiveTimeSlot(
+      time,
+      time.label === label && (!time.selected || time.paused),
+      true,
+    ),
+  ),
 });
 
 const timeslotTick = (store: StoreContent, slot: TimeSlot): StoreContent => ({
@@ -109,15 +137,9 @@ const toggleResetDialog = (store: StoreContent, visible: boolean): StoreContent 
 const togglePausedTimer = (store: StoreContent): StoreContent => ({
   ...store,
   speakers: store.speakers.map((party) => party.map(
-    (speaker) => {
-      const shouldBeActive = speaker.selected && speaker.paused;
-      return {
-        ...speaker,
-        paused: !shouldBeActive,
-        timeStartedDate: shouldBeActive ? Date.now() : null,
-      };
-    },
+    (slot) => toggleActiveTimeSlot(slot),
   )),
+  prepTimes: store.prepTimes.map((slot) => toggleActiveTimeSlot(slot)),
 });
 
 const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
@@ -131,6 +153,8 @@ const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
       return setTheme(store, action.payload);
     case 'SET_MODE':
       return setMode(store, action.payload);
+    case 'INCREMENT_LINEAR_ACTIVE_SLOT_INDEX':
+      return incrementLinearActiveSlotIndex(store);
     case 'SET_SELECTED_SPEAKER':
       return setSelectedSpeaker(store, action.payload);
     case 'TOGGLE_ACTIVE_PREP_TIME':

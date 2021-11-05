@@ -9,13 +9,15 @@ export interface StoreContent {
   modes: RadioOption[]
   speakers: TimeSlot[][]
   prepTimes: TimeSlot[]
-  resetDialogVisible: boolean
+  resetDialogVisible: boolean,
+  linearActiveSlotIndex: number,
 }
 
 export type StoreActionType =
   'SET_SCREEN'
   | 'SET_THEME'
   | 'SET_MODE'
+  | 'INCREMENT_LINEAR_ACTIVE_SLOT_INDEX'
   | 'SET_SELECTED_SPEAKER'
   | 'TOGGLE_ACTIVE_PREP_TIME'
   | 'TIMESLOT_TICK'
