@@ -101,26 +101,22 @@ const toggleActivePrepTime = (store: StoreContent, label: string): StoreContent 
   ),
 });
 
+const getNewTimestartedDate = (
+  time: TimeSlot,
+) => (time.timeStartedDate ? time.timeStartedDate + 1000 : Date.now());
+
+const tickItem = (item: TimeSlot, activeSlot: TimeSlot): TimeSlot => {
+  const isActive = activeSlot.label === item.label;
+  return {
+    ...item,
+    elapsed: isActive ? item.elapsed + 1 : item.elapsed,
+    timeStartedDate: isActive ? getNewTimestartedDate(item) : null,
+  };
+};
 const timeslotTick = (store: StoreContent, slot: TimeSlot): StoreContent => ({
   ...store,
-  prepTimes: store.prepTimes.map((time) => {
-    const isActive = slot.label === time.label;
-    return {
-      ...time,
-      elapsed: isActive ? time.elapsed + 1 : time.elapsed,
-      timeStartedDate: isActive ? time.timeStartedDate! + 1000 : null,
-    };
-  }),
-  speakers: store.speakers.map((party) => party.map(
-    (item) => {
-      const isActive = slot.label === item.label;
-      return {
-        ...item,
-        elapsed: isActive ? item.elapsed + 1 : item.elapsed,
-        timeStartedDate: isActive ? item.timeStartedDate! + 1000 : null,
-      };
-    },
-  )),
+  prepTimes: store.prepTimes.map((item) => tickItem(item, slot)),
+  speakers: store.speakers.map((party) => party.map((item) => tickItem(item, slot))),
 });
 
 const reset = (store: StoreContent): StoreContent => ({
