@@ -143,6 +143,14 @@ const togglePausedTimer = (store: StoreContent): StoreContent => ({
   prepTimes: store.prepTimes.map((slot) => toggleActiveTimeSlot(slot)),
 });
 
+const hideFeatureDiscovery = (store: StoreContent): StoreContent => {
+  setActiveOption('featureDiscoveryHidden', 'true');
+  return {
+    ...store,
+    featureDiscoveryVisible: false,
+  };
+};
+
 const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
   switch (action.type) {
     case 'SET_SCREEN':
@@ -168,6 +176,8 @@ const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
       return toggleResetDialog(store, action.payload);
     case 'TOGGLE_PAUSED_TIMER':
       return togglePausedTimer(store);
+    case 'HIDE_FEATURE_DISCOVERY':
+      return hideFeatureDiscovery(store);
     default:
       return store;
   }

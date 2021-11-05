@@ -3,6 +3,7 @@ import {
   modes, prepTimes, speakers, themes,
 } from '../config';
 import { Screen } from '../types';
+import { getActiveOption } from '../localStorage';
 
 export default {
   screen: 'timer' as Screen,
@@ -32,4 +33,5 @@ export default {
   })),
   resetDialogVisible: false,
   linearActiveSlotIndex: 0,
+  featureDiscoveryVisible: getActiveOption('featureDiscoveryHidden', 'false') === 'false',
 } as StoreContent;

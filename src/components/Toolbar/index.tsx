@@ -28,6 +28,10 @@ const Toolbar: FunctionalComponent = () => {
         disabled={timeRunning}
         onClick={() => {
           dispatch({
+            type: 'HIDE_FEATURE_DISCOVERY',
+            payload: null,
+          });
+          dispatch({
             type: 'SET_SCREEN',
             payload: 'settings',
           });

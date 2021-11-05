@@ -10,6 +10,10 @@ const handleCardClick = (
   activeSlot: TimeSlot, dispatch: Dispatch,
 ) => {
   dispatch({
+    type: 'HIDE_FEATURE_DISCOVERY',
+    payload: null,
+  });
+  dispatch({
     type: activeSlot.paused ? 'TOGGLE_PAUSED_TIMER' : 'INCREMENT_LINEAR_ACTIVE_SLOT_INDEX',
     payload: null,
   });

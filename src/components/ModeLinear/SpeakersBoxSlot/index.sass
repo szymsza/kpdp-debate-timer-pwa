@@ -27,6 +27,13 @@
 .speakers-box__time
     font-weight: 300
 
+@media #{$iPhoneLandscape}, #{$iPhone6Plus}
+    .speakers-box__row--speaker
+        font-size: 1.1rem
+
+    .speakers-box__row--questioner
+        font-size: .85rem
+
 @media #{$iPad}
     .speakers-box__row--speaker
         font-size: 1.5rem
@@ -42,10 +49,3 @@
     .speakers-box__row--questioner
         margin-top: .25rem
         font-size: .75rem
-
-@media #{$iPhoneLandscape} #{$iPhone6Plus}
-    .speakers-box__row--speaker
-        font-size: 1.1rem
-
-    .speakers-box__row--questioner
-        font-size: .85rem

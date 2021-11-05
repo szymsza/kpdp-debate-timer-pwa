@@ -1,0 +1,70 @@
+@import "../../../style/variables"
+
+.feature-discovery
+    height: 100%
+    left: 0
+    position: absolute
+    top: 0
+    width: 100%
+    background-color: rgba(0, 0, 0, .6)
+
+.feature-discovery__heading
+    position: absolute
+    z-index: 6
+    margin: 0
+    color: white
+    text-align: center
+    text-shadow: 2px 1px 2px black, 1px 1px 4px black
+
+.feature-discovery__heading--timer
+    bottom: 45%
+    left: 50%
+    transform: translateX(-50%)
+    width: Min(100vw, 350px)
+    padding: 0 1rem
+    font-size: 1.4rem
+
+.feature-discovery__heading--settings
+    bottom: .5rem
+    right: 42%
+    width: Min(55%, 220px)
+    font-size: 1.2rem
+
+
+// Only if wrapped in feature-discovery-enabled wrapper
+.time-slots-carousel__card:first-child, .toolbar__button:last-child
+    z-index: 5
+    box-shadow: var(--feature-discovery-glow-shadow)
+
+.toolbar__button:last-child
+    background: inherit
+
+@media #{$iPhone6Plus}
+    .feature-discovery__heading--timer
+        bottom: 50%
+
+@media #{$iPad}
+    .feature-discovery__heading--timer
+        bottom: 47%
+        font-size: 1.6rem
+
+    .feature-discovery__heading--settings
+        bottom: 2rem
+        right: 50%
+
+@media #{$iPadPro}
+    .feature-discovery__heading--timer
+        bottom: 50%
+
+@media #{$iPhoneLandscape}
+    .feature-discovery__heading--timer
+        bottom: auto
+        left: 0
+        top: 10%
+        transform: none
+
+    .feature-discovery__heading--settings
+        bottom: auto
+        top: 30%
+        right: 3%
+        text-align: right

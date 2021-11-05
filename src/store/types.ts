@@ -11,6 +11,7 @@ export interface StoreContent {
   prepTimes: TimeSlot[]
   resetDialogVisible: boolean,
   linearActiveSlotIndex: number,
+  featureDiscoveryVisible: boolean,
 }
 
 export type StoreActionType =
@@ -23,7 +24,8 @@ export type StoreActionType =
   | 'TIMESLOT_TICK'
   | 'RESET'
   | 'TOGGLE_RESET_DIALOG'
-  | 'TOGGLE_PAUSED_TIMER';
+  | 'TOGGLE_PAUSED_TIMER'
+  | 'HIDE_FEATURE_DISCOVERY';
 
 export interface StoreAction {
   type: StoreActionType
