@@ -4,13 +4,15 @@
     display: flex
     align-items: center
     height: 2.5rem
-    justify-content: space-between
+    justify-content: center
     background-color: var(--bg-secondary)
+    --nav-button-width: 3rem
+    --nav-button-padding: .5rem
 
 .nav__back, .nav__filler
     height: 100%
-    padding: 0 0 0 .5rem
-    width: 3rem
+    padding: 0 0 0 var(--nav-button-padding)
+    width: var(--nav-button-width)
     text-align: left
 
 .nav__back
@@ -22,8 +24,10 @@
 
 .nav__heading
     margin: 0
+    width: calc(Min(#{$maxContainerWidth}, 100%) - 2 * (var(--nav-button-width) + var(--nav-button-padding)))
     font-size: .9rem
     font-weight: 300
+    text-align: center
 
 @media #{$iPhone6}, #{$iPhoneLandscape}
     .nav
