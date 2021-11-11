@@ -14,6 +14,7 @@ export default {
       (speaker, speakerIndex) => ({
         ...speaker,
         party: partyIndex === 0 ? 'affirmative' : 'negative',
+        type: 'speaker',
         paused: true,
         selected: speakerIndex === 0 && partyIndex === speakerIndex,
         total: speaker.time * 60,
@@ -25,6 +26,7 @@ export default {
   prepTimes: prepTimes.map((item, itemIndex) => ({
     ...item,
     party: itemIndex === 0 ? 'affirmative' : 'negative',
+    type: 'prepTime',
     selected: false,
     paused: true,
     total: item.time * 60,

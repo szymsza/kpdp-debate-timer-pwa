@@ -5,6 +5,7 @@ const localisation: Record<string, string> = {
   close: 'Zavřít',
   linearFeatureDiscoveryButton: 'Klepněte na kartičku na začátku a konci každé řeči',
   linearFeatureDiscoverySettings: 'Rozložení můžete změnit v nastavení',
+  linearPrepTimeSuffix: ' - přípravný čas',
   mode: 'Režim zobrazení',
   modeClassic: 'Klasický',
   modeLinear: 'Jednoduchý',

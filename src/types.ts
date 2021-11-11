@@ -4,6 +4,8 @@ export type Screen = typeof screens[number];
 
 export type Party = 'affirmative' | 'negative';
 
+export type TimeSlotType = 'speaker' | 'prepTime';
+
 export interface TimeSlotConfig {
   label: string
   time: number
@@ -12,6 +14,7 @@ export interface TimeSlotConfig {
 export interface TimeSlot {
   label: string
   party: Party
+  type: TimeSlotType
   total: number
   elapsed: number
   selected: boolean
