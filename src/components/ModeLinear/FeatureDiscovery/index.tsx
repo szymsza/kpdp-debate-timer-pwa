@@ -13,7 +13,13 @@ const FeatureDiscovery: FunctionalComponent = () => {
   return (
     <section className="feature-discovery">
       <h2 className="feature-discovery__heading feature-discovery__heading--timer">{localisation.linearFeatureDiscoveryButton}</h2>
-      <h2 className="feature-discovery__heading feature-discovery__heading--settings">{localisation.linearFeatureDiscoverySettings}</h2>
+      {/*
+      <h2
+        className="feature-discovery__heading feature-discovery__heading--settings"
+      >
+        {localisation.linearFeatureDiscoverySettings}
+      </h2>
+      */}
     </section>
   );
 };
