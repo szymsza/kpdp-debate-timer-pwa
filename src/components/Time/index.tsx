@@ -17,15 +17,16 @@ const getTimeString = (seconds: number): string => {
   return `${seconds < 0 ? '-' : ''}${minutesPart}:${secondsPart < 10 ? '0' : ''}${secondsPart}`;
 };
 
+export const formatTime = (time: TimeSlot, display: TimeDisplayOptions = 'remaining') => {
+  const seconds = display === 'elapsed' ? time.elapsed : time.total - time.elapsed;
+  return getTimeString(seconds);
+};
+
 const Time: FunctionalComponent<TimeProps> = ({
   className, display, time,
 }) => (
   <span className={className ?? ''}>
-    {getTimeString(
-      display === 'elapsed'
-        ? time.elapsed
-        : time.total - time.elapsed,
-    )}
+    {formatTime(time, display)}
   </span>
 );
 
