@@ -19,7 +19,7 @@ const Card: FunctionalComponent<CardProps> = ({
   <button
     type="button"
     disabled={!active}
-    className={`time-slots-carousel__card time-slots-carousel__card--${timeSlot.party} ${!active ? 'time-slots-carousel__card--disabled' : ''}`}
+    className={`time-slots-carousel__card time-slots-carousel__card--${timeSlot.party}${!active ? ' time-slots-carousel__card--disabled' : ''}${active && timeSlot.paused ? ' time-slots-carousel__card--paused' : ''}${timeSlot.elapsed === 0 ? ' time-slots-carousel__card--not-started' : ''}`}
     onClick={(e) => (onClick ? onClick(e) : null)}
   >
     <span className="time-slots-carousel__card-label">

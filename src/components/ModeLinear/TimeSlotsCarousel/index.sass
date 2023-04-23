@@ -48,6 +48,21 @@ $carouselCardCount: 18
     opacity: .75
     cursor: not-allowed
 
+// Pulsate card if it is paused and:
+// - is not the last one
+// - is the last one and has not been started yet
+.time-slots-carousel__card--paused.time-slots-carousel__card--not-started, .time-slots-carousel__card--paused:not(:last-child)
+    opacity: .5
+    animation: Pulsate 1.25s ease-in-out infinite
+
+@keyframes Pulsate
+    from
+        opacity: .4
+    70%
+        opacity: 1
+    to
+        opacity: .4
+
 .time-slots-carousel__card--affirmative
     --party-colour: var(--party-affirmative)
 
