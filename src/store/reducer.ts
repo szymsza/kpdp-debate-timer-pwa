@@ -55,15 +55,17 @@ const toggleActiveTimeSlot = (
   slot: TimeSlot,
   active: boolean = slot.selected && slot.paused,
   toggleSelected: boolean = false,
+  running: boolean = true,
 ) => ({
   ...slot,
   selected: toggleSelected ? active : slot.selected,
-  paused: !active,
-  timeStartedDate: active ? Date.now() : null,
+  paused: !active || !running,
+  timeStartedDate: active && running ? Date.now() : null,
 });
 
 const incrementLinearActiveSlotIndex = (store: StoreContent): StoreContent => {
   const linearSlots: TimeSlot[] = getLinearTimeSlots(store);
+  const currentSlot: TimeSlot | null = linearSlots[store.linearActiveSlotIndex];
   const nextSlot: TimeSlot | null = linearSlots[store.linearActiveSlotIndex + 1] ?? null;
 
   const slotShouldBeActive = (slot: TimeSlot) => nextSlot && slot.label === nextSlot.label;
@@ -71,7 +73,7 @@ const incrementLinearActiveSlotIndex = (store: StoreContent): StoreContent => {
   return {
     ...store,
     speakers: store.speakers.map((party) => party.map(
-      (slot) => toggleActiveTimeSlot(slot, slotShouldBeActive(slot), !!nextSlot),
+      (slot) => toggleActiveTimeSlot(slot, slotShouldBeActive(slot), !!nextSlot, currentSlot.type !== 'prepTime'),
     )),
     prepTimes: store.prepTimes.map((slot) => toggleActiveTimeSlot(
       slot, slotShouldBeActive(slot), !!nextSlot,
