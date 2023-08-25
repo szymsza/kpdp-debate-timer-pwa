@@ -1,8 +1,8 @@
 {
   "name": "Debatní stopky",
   "short_name": "Debatní stopky",
-  "start_url": "/stopky/index.html",
-  "scope": "/stopky/",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#000000",
