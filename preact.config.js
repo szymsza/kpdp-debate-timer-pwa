@@ -10,7 +10,7 @@ export default {
    * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
    **/
   webpack(config, env, helpers, options) {
-    const productionSubfolder = 'stopky';
+    const productionSubfolder = 'build';
 
     const subfolder = env.isProd ? `/${productionSubfolder}` : '';
     config.output.publicPath = env.isProd ? `${subfolder}/` : './';

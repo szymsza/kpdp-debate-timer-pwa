@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "license": "GPL-3.0-only",
   "scripts": {
-    "build": "preact build --dest stopky",
+    "build": "preact build --dest build",
     "serve": "sirv build --port 8082 --cors --single --host",
     "dev": "preact watch -p 8081",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
