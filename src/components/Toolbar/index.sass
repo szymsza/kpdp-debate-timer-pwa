@@ -1,4 +1,5 @@
-@import "../../style/variables"
+@use "../../style/variables" as *
+@use "sass:math"
 
 .toolbar
     display: flex
@@ -6,7 +7,7 @@
     background-color: var(--bg-secondary)
 
 .toolbar__button
-    max-width: #{$maxContainerWidth / 2}
+    max-width: math.div($maxContainerWidth, 2)
     padding: .4rem 0
     width: 50%
     color: var(--font-secondary)
