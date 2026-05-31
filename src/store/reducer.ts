@@ -82,6 +82,27 @@ const incrementLinearActiveSlotIndex = (store: StoreContent): StoreContent => {
   };
 };
 
+const decrementLinearActiveSlotIndex = (store: StoreContent): StoreContent => {
+  const prevIndex = store.linearActiveSlotIndex - 1;
+  if (prevIndex < 0) return store;
+
+  const linearSlots: TimeSlot[] = getLinearTimeSlots(store);
+  const prevSlot: TimeSlot = linearSlots[prevIndex];
+
+  const slotShouldBeActive = (slot: TimeSlot) => slot.label === prevSlot.label;
+
+  return {
+    ...store,
+    speakers: store.speakers.map((party) => party.map(
+      (slot) => toggleActiveTimeSlot(slot, slotShouldBeActive(slot), true, false),
+    )),
+    prepTimes: store.prepTimes.map((slot) => toggleActiveTimeSlot(
+      slot, slotShouldBeActive(slot), true, false,
+    )),
+    linearActiveSlotIndex: prevIndex,
+  };
+};
+
 const setSelectedSpeaker = (store: StoreContent, label: string): StoreContent => ({
   ...store,
   speakers: store.speakers.map((party) => party.map(
@@ -162,6 +183,8 @@ const reducer = (store: StoreContent, action: StoreAction): StoreContent => {
       return setMode(store, action.payload);
     case 'INCREMENT_LINEAR_ACTIVE_SLOT_INDEX':
       return incrementLinearActiveSlotIndex(store);
+    case 'DECREMENT_LINEAR_ACTIVE_SLOT_INDEX':
+      return decrementLinearActiveSlotIndex(store);
     case 'SET_SELECTED_SPEAKER':
       return setSelectedSpeaker(store, action.payload);
     case 'TOGGLE_ACTIVE_PREP_TIME':

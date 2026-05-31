@@ -1,4 +1,4 @@
-@import "../../../style/variables"
+@use "../../../style/variables" as *
 
 $carouselCardCount: 18
 
@@ -6,6 +6,7 @@ $carouselCardCount: 18
     display: flex
     gap: var(--carousel-flex-gap)
     padding: Min(var(--padding-x), 2rem) var(--padding-x) Min(calc(2 * var(--padding-x)), 4rem)
+    touch-action: pan-y
 
     --carousel-flex-gap: 1rem
     --carousel-card-overflow: 1rem
@@ -46,6 +47,8 @@ $carouselCardCount: 18
 
 .time-slots-carousel__card--disabled
     opacity: .75
+
+.time-slots-carousel__card:disabled
     cursor: not-allowed
 
 // Pulsate card if it is paused and:

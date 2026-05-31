@@ -8,17 +8,19 @@ export type CardOnClickEvent = h.JSX.TargetedEvent<HTMLElement, MouseEvent>;
 interface CardProps {
   timeSlot: TimeSlot
   active: boolean,
+  clickable?: boolean,
   onClick?: (e: CardOnClickEvent) => void
 }
 
 const Card: FunctionalComponent<CardProps> = ({
   timeSlot,
   active,
+  clickable = false,
   onClick,
 }) => (
   <button
     type="button"
-    disabled={!active}
+    disabled={!active && !clickable}
     className={`time-slots-carousel__card time-slots-carousel__card--${timeSlot.party}${!active ? ' time-slots-carousel__card--disabled' : ''}${active && timeSlot.paused ? ' time-slots-carousel__card--paused' : ''}${timeSlot.elapsed === 0 ? ' time-slots-carousel__card--not-started' : ''}`}
     onClick={(e) => (onClick ? onClick(e) : null)}
   >

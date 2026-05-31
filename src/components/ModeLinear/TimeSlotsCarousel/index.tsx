@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from 'preact';
-import { useContext } from 'preact/hooks';
+import { useContext, useRef } from 'preact/hooks';
 import { Context } from '../../../store';
 import Card from './Card';
 import { getLinearActiveSlotIndex, getLinearTimeSlots } from '../getters';
@@ -19,24 +19,39 @@ const handleCardClick = (
   });
 };
 
+const SWIPE_THRESHOLD = 50;
+
 const TimeSlotsCarousel: FunctionalComponent = () => {
   const { store, dispatch } = useContext(Context);
   const timeSlots: TimeSlot[] = getLinearTimeSlots(store);
   const activeSlotIndex = getLinearActiveSlotIndex(store);
+  const touchStartX = useRef<number | null>(null);
 
   return (
-    <section className={`time-slots-carousel time-slots-carousel--card-${activeSlotIndex}-visible`}>
+    <section
+      className={`time-slots-carousel time-slots-carousel--card-${activeSlotIndex}-visible`}
+      onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+      onTouchEnd={(e) => {
+        if (touchStartX.current === null) return;
+        const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+        if (deltaX > SWIPE_THRESHOLD) {
+          dispatch({ type: 'DECREMENT_LINEAR_ACTIVE_SLOT_INDEX', payload: null });
+        }
+      }}
+    >
       {
         timeSlots.map((slot, index) => (
           <Card
             timeSlot={slot}
             active={index === activeSlotIndex}
+            clickable={index === activeSlotIndex - 1}
             onClick={() => {
-              if (index !== activeSlotIndex) {
-                return;
+              if (index === activeSlotIndex - 1) {
+                dispatch({ type: 'DECREMENT_LINEAR_ACTIVE_SLOT_INDEX', payload: null });
+              } else if (index === activeSlotIndex) {
+                handleCardClick(slot, dispatch);
               }
-
-              handleCardClick(slot, dispatch);
             }}
           />
         ))
