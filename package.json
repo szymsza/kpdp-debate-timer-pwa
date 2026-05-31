@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "license": "GPL-3.0-only",
   "scripts": {
-    "build": "preact build --dest build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider preact build --dest build",
     "serve": "sirv build --port 8082 --cors --single --host",
-    "dev": "preact watch -p 8081",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider preact watch -p 8081",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "start": "npm run dev"
   },
@@ -34,7 +34,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "node-sass": "^6.0.1",
+    "sass": "^1.77.0",
     "preact-cli": "^3.0.0",
     "sass-loader": "^10.2.0",
     "sirv-cli": "^1.0.0-next.3",
