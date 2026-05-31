@@ -34,7 +34,7 @@ export const modes: RadioOption[] = [{
 
 const speechTimes: Record<string, number> = {
   constructive: 6,
-  closing: 5,
+  closing: 6,
   questions: 3,
 };
 
@@ -79,6 +79,6 @@ export const prepTimes: TimeSlotConfig[] = [
     time: 5,
   }, {
     label: localisation.negative,
-    time: 7,
+    time: 5,
   },
 ];
